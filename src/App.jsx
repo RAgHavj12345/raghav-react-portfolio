@@ -1,102 +1,94 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
 
-// Animation variants for sections
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+// Data for our draggable items
+const items = [
+  {
+    type: 'text',
+    id: 'name',
+    content: 'Raghav Joshi',
+    className: 'text-block title',
+    initialPos: { top: '15%', left: '10%' }
+  },
+  {
+    type: 'text',
+    id: 'subtitle',
+    content: 'Aspiring AI & Machine Learning Engineer',
+    className: 'text-block subtitle',
+    initialPos: { top: '25%', left: '12%' }
+  },
+  {
+    type: 'image',
+    id: 'img1',
+    src: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2070&auto=format&fit=crop',
+    alt: 'Code on a screen',
+    className: 'image-block medium',
+    initialPos: { top: '40%', left: '5%' }
+  },
+  {
+    type: 'image',
+    id: 'img2',
+    src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop',
+    alt: 'Abstract technology background',
+    className: 'image-block large',
+    initialPos: { top: '10%', left: '60%' }
+  },
+  {
+    type: 'image',
+    id: 'img3',
+    src: 'https://images.unsplash.com/photo-1620712943543-2858200f745a?q=80&w=2069&auto=format&fit=crop',
+    alt: 'Abstract AI art',
+    className: 'image-block small',
+    initialPos: { top: '65%', left: '75%' }
+  },
+  {
+    type: 'text',
+    id: 'links',
+    content: (
+      <>
+        <a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a>
+        <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:raghavj12321@gmail.com">Contact</a>
+      </>
+    ),
+    className: 'text-block links',
+    initialPos: { bottom: '5%', right: '5%' }
   }
-};
+];
 
 const App = () => {
+  const constraintsRef = useRef(null);
+
   return (
-    <div className="app-container">
-      <nav className="navbar">
-        <a href="#home" className="logo">RJ</a>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
-        </ul>
-      </nav>
-
-      <header id="home" className="hero">
+    <motion.div className="app-container" ref={constraintsRef}>
+      {items.map((item, index) => (
         <motion.div
-          className="hero-content"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.3 } }
+          key={item.id}
+          className={item.className}
+          style={{ 
+            top: item.initialPos.top, 
+            left: item.initialPos.left,
+            bottom: item.initialPos.bottom,
+            right: item.initialPos.right
           }}
+          drag
+          dragConstraints={constraintsRef}
+          dragMomentum={false}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: index * 0.15, duration: 0.5, ease: "easeOut" }}
+          whileTap={{ scale: 0.95, zIndex: 10 }}
+          whileHover={{ zIndex: 10 }}
         >
-          <motion.h1 variants={sectionVariants}>Raghav Joshi</motion.h1>
-          <motion.p variants={sectionVariants} className="subtitle">Aspiring AI & Machine Learning Engineer</motion.p>
-          <motion.a variants={sectionVariants} href="mailto:raghavj12321@gmail.com" className="btn">Contact Me</motion.a>
+          {item.type === 'text' ? (
+            item.content
+          ) : (
+            <img src={item.src} alt={item.alt} draggable="false" />
+          )}
         </motion.div>
-      </header>
-
-      <main>
-        <motion.section
-          id="about"
-          className="content-section"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={sectionVariants}
-        >
-          <h2 className="section-title">About Me</h2>
-          <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
-        </motion.section>
-
-        <motion.section
-          id="skills"
-          className="content-section"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
-        >
-          <h2 className="section-title">Skills</h2>
-          <div className="skills-grid">
-            {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#2a2a2a' }}>
-                {skill}
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        <motion.section
-          id="projects"
-          className="content-section"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={sectionVariants}
-        >
-          <h2 className="section-title">Featured Project</h2>
-          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.2)' }}>
-            <h3>Real-Time Face and Behaviour Analysis System</h3>
-            <p className="project-status">(In Progress)</p>
-            <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
-            <p className="tech-stack"><strong>Tech:</strong> Python, OpenCV, TensorFlow</p>
-          </motion.div>
-        </motion.section>
-      </main>
-
-      <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
-        <div className="footer-links">
-          <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-      </footer>
-    </div>
+      ))}
+    </motion.div>
   );
 };
 
