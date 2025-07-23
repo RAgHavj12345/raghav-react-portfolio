@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
-    /* New color palette inspired by Homer/Blonded */
-    --bg-color: #000000; /* Stark black background */
-    --text-color: #fafafa; /* Bright, clean white for main text */
-    --subtle-text-color: #888888; /* Softer grey for secondary text */
-    --accent-color: #ffffff; /* Pure white for accents and titles */
-    --border-color: #222222; /* Slightly lighter border for subtle contrast */
-    --card-bg: #111111; /* Very dark grey for cards */
+    /* New Light Mode color palette inspired by Homer */
+    --bg-color: #ffffff; /* Clean white background */
+    --text-color: #111111; /* Dark grey for main text */
+    --subtle-text-color: #666666; /* Lighter grey for secondary text */
+    --accent-color: #000000; /* Pure black for accents and titles */
+    --border-color: #eeeeee; /* Very light grey for subtle borders */
+    --card-bg: #ffffff; /* White cards, defined by borders/shadows */
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'DM Serif Display', serif;
 }
@@ -35,8 +35,9 @@ body {
     width: 90%;
     top: 0;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.7); /* Frosted glass effect */
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
@@ -105,11 +106,13 @@ body {
     border-radius: 50px;
     text-decoration: none;
     transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--accent-color);
 }
 
 .btn:hover {
     transform: scale(1.05);
-    background-color: #cccccc;
+    background-color: #333333;
+    border-color: #333333;
 }
 
 /* --- Main Content --- */
@@ -143,7 +146,12 @@ main {
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-item:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
 }
 
 .project-card {
@@ -152,7 +160,11 @@ main {
     padding: 2rem;
     text-align: left;
     background-color: var(--card-bg);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .project-card h3 {
