@@ -90,7 +90,7 @@ const App = () => {
       </main>
 
       <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi. Built with React & Framer Motion.</p>
+        <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
         <div className="footer-links">
           <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
