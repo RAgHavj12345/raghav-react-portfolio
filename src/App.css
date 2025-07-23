@@ -1,136 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
+
 :root {
-    --bg-color: #0a0a0a;
-    --primary-text-color: #e0e0e0;
-    --secondary-text-color: #888;
-    --accent-color: #007cf0;
-    --accent-glow: rgba(0, 124, 240, 0.5);
-    --card-bg: #1a1a1a;
+    --bg-color: #0d0d0d;
+    --text-color: #e6e6e6;
+    --subtle-text-color: #7a7a7a;
+    --accent-color: #ffffff;
     --border-color: #2a2a2a;
-    --heading-font: 'Montserrat', sans-serif;
-    --body-font: 'Roboto', sans-serif;
+    --font-sans: 'Inter', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
 }
 
 body {
-    font-family: var(--body-font);
     background-color: var(--bg-color);
-    color: var(--primary-text-color);
-    margin: 0;
+    color: var(--text-color);
+    font-family: var(--font-sans);
 }
 
-.App {
-    text-align: center;
-}
-
-.container {
-    width: 90%;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.navbar {
-    width: 100%;
-    padding: 1rem 0;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(10px);
-}
-
-.navbar .container {
+.app-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    min-height: 100vh;
+    padding: 1.5rem;
 }
 
-.logo {
-    font-family: var(--heading-font);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    text-decoration: none;
-}
-
-.navbar ul {
-    list-style: none;
+/* --- Navigation --- */
+.navbar {
     display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.navbar a {
-    color: var(--primary-text-color);
-    text-decoration: none;
+.nav-button {
+    background: none;
+    border: none;
+    color: var(--subtle-text-color);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    position: relative;
     transition: color 0.3s ease;
 }
 
-.navbar a:hover {
+.nav-button:hover {
+    color: var(--text-color);
+}
+
+.nav-button.active {
     color: var(--accent-color);
 }
 
-.hero {
-    min-height: 100vh;
+.nav-button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-}
-
-.hero .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero h1 {
-    font-family: var(--heading-font);
-    font-size: 4.5rem;
-    margin: 0;
-}
-
-.hero h2 {
-    font-family: var(--heading-font);
-    font-size: 1.8rem;
-    color: var(--accent-color);
-    margin: 0.5rem 0 1.5rem 0;
-    font-weight: 400;
-}
-
-.hero p {
-    max-width: 600px;
-    color: var(--secondary-text-color);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-}
-
-.btn {
-    display: inline-block;
+    height: 1px;
     background-color: var(--accent-color);
-    color: #fff;
-    padding: 0.8rem 2.5rem;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    transition: all 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
 }
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--accent-glow);
+.nav-button.active::after {
+    transform: scaleX(1);
 }
 
-main section {
-    padding: 6rem 0;
+
+/* --- Main Content --- */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
 }
 
-main section h3 {
-    font-family: var(--heading-font);
+section {
+    width: 100%;
+    max-width: 700px;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--subtle-text-color);
+    letter-spacing: 0.5px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
     font-size: 2.5rem;
     margin-bottom: 2rem;
+}
+
+.section-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--subtle-text-color);
 }
 
 .skills-grid {
@@ -141,44 +119,56 @@ main section h3 {
 }
 
 .skill-item {
-    background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card {
-    background-color: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 2rem;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.project-card h4 {
-    font-family: var(--heading-font);
+.project-card h3 {
+    font-family: var(--font-serif);
     font-size: 1.8rem;
-    color: var(--accent-color);
+    margin-bottom: 0.5rem;
 }
 
 .project-status {
+    color: var(--subtle-text-color);
     font-style: italic;
-    color: var(--secondary-text-color);
-    margin: 0.5rem 0;
+    margin-bottom: 1rem;
 }
 
-#cta {
-    background-color: var(--card-bg);
-    border-radius: 15px;
-    padding: 4rem 2rem;
+.tech-stack {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--subtle-text-color);
 }
 
-footer {
-    padding: 2rem 0;
-    color: var(--secondary-text-color);
-    border-top: 1px solid var(--border-color);
-    margin-top: 4rem;
+
+/* --- Footer --- */
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding-top: 1.5rem;
+}
+
+.footer a {
+    color: var(--subtle-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--text-color);
 }
