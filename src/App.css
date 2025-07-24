@@ -9,13 +9,18 @@
     --card-bg: #ffffff;
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'DM Serif Display', serif;
+    --navbar-height: 80px; /* Define navbar height for padding */
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-height); /* This is the fix: Prevents navbar from covering content */
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-sans);
-    scroll-behavior: smooth;
 }
 
 .app-container {
@@ -37,6 +42,7 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
+    height: 50px; /* Give navbar a defined height */
 }
 
 .navbar .container {
@@ -282,7 +288,7 @@ main {
         transform: translateY(8px) rotate(45deg);
     }
 
-    .hamburger.active .bar:nth-al ternate-child(3) {
+    .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
     
