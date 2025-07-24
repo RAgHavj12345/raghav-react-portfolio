@@ -15,6 +15,10 @@ function BackgroundShapes() {
                 (Math.random() - 0.5) * 30,
                 (Math.random() - 0.5) * 30
             );
+            // Ensure no shapes are too close to the main object
+            if (position.length() < 8) {
+                position.normalize().multiplyScalar(8 + Math.random() * 8);
+            }
             const rotation = new Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
             const scale = Math.random() * 0.3 + 0.2;
             const speed = Math.random() * 0.2 + 0.1;
@@ -53,8 +57,8 @@ function DriftingShape({ isSphere, position, rotation, scale, speed }) {
     return (
         <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
             {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-            {/* Use a darker solid material that is more visible against a white background */}
-            <meshStandardMaterial color="#888888" roughness={0.6} />
+            {/* Use a darker solid material for high contrast */}
+            <meshStandardMaterial color="#555555" roughness={0.8} metalness={0.1} />
         </mesh>
     );
 }
@@ -96,14 +100,14 @@ function MainShapes() {
     <motion.group>
       {/* Main Shape */}
       <TorusKnot ref={mainShapeRef} args={[1, 0.3, 128, 16]}>
-        {/* Changed to wireframe for a classic look that doesn't need complex light */}
-        <meshBasicMaterial color="#000000" wireframe />
+        {/* Changed to a solid material for a premium look */}
+        <meshStandardMaterial color="#111111" roughness={0.1} metalness={0.2} />
       </TorusKnot>
       
       {/* Orbiting Shape */}
       <mesh ref={orbitingShapeRef}>
         <sphereGeometry args={[0.2, 32, 32]} />
-        <meshBasicMaterial color="#333333" wireframe />
+        <meshStandardMaterial color="#333333" roughness={0.5} />
       </mesh>
     </motion.group>
   );
@@ -114,9 +118,10 @@ export default function Scene() {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
       <color attach="background" args={['#ffffff']} />
-      {/* Simplified and strengthened lighting to ensure visibility */}
-      <ambientLight intensity={5} />
-      <directionalLight position={[5, 5, 5]} intensity={5} />
+      {/* Add lights to illuminate the solid shapes */}
+      <ambientLight intensity={1.5} />
+      <directionalLight position={[10, 10, 5]} intensity={2} />
+      <pointLight position={[-10, -10, -10]} intensity={1.5} />
       
       <BackgroundShapes />
       <MainShapes />
