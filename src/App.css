@@ -9,12 +9,12 @@
     --card-bg: #ffffff;
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'DM Serif Display', serif;
-    --navbar-height: 80px; /* Define navbar height for padding */
+    --navbar-height: 80px;
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--navbar-height); /* This is the fix: Prevents navbar from covering content */
+    scroll-padding-top: var(--navbar-height);
 }
 
 body {
@@ -24,9 +24,18 @@ body {
 }
 
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    position: relative; /* Needed for the background scene */
+    z-index: 1;
+}
+
+.background-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Place it behind all other content */
+    opacity: 0.15; /* Make it subtle */
 }
 
 /* --- Navigation --- */
@@ -42,7 +51,7 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    height: 50px; /* Give navbar a defined height */
+    height: 50px;
 }
 
 .navbar .container {
@@ -149,6 +158,7 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 2rem;
+    background-color: var(--bg-color); /* Give main a solid background to cover the 3D scene when scrolling */
 }
 
 .content-section {
@@ -221,7 +231,7 @@ main {
 }
 
 .footer-links {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .footer-links a {
@@ -238,10 +248,10 @@ main {
 
 .footer {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem;
     border-top: 1px solid var(--border-color);
     margin-top: 4rem;
-    color: var(--subtle-text-color);
+    background-color: var(--bg-color);
 }
 
 /* --- Mobile Styles --- */

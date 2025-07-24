@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Scene from './Scene'; // Import the new 3D scene component
 import './App.css';
 
 // Animation variants for sections
@@ -15,16 +16,15 @@ const sectionVariants = {
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  }
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <div className="app-container">
+      <div className="background-scene">
+        <Scene />
+      </div>
+
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
@@ -34,7 +34,6 @@ const App = () => {
             <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
-            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
 
           <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
@@ -73,6 +72,8 @@ const App = () => {
           <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
         </motion.section>
 
+        {/* ... Rest of your sections (Skills, Projects, etc.) remain the same ... */}
+        
         <motion.section
           id="skills"
           className="content-section"
@@ -84,7 +85,7 @@ const App = () => {
           <h2 className="section-title">Skills</h2>
           <div className="skills-grid">
             {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#2a2a2a' }}>
+              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#000000', color: '#ffffff' }}>
                 {skill}
               </motion.div>
             ))}
@@ -100,7 +101,7 @@ const App = () => {
           variants={sectionVariants}
         >
           <h2 className="section-title">Featured Project</h2>
-          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.2)' }}>
+          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
             <h3>Real-Time Face and Behaviour Analysis System</h3>
             <p className="project-status">(In Progress)</p>
             <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
@@ -108,7 +109,7 @@ const App = () => {
           </motion.div>
         </motion.section>
 
-        <motion.section
+         <motion.section
           id="contact"
           className="content-section"
           initial="hidden"
@@ -119,15 +120,16 @@ const App = () => {
             <h2 className="section-title">Get In Touch</h2>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
-            <div className="footer-links">
-                <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
         </motion.section>
+
       </main>
 
       <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
+        <p>&copy; 2025 Raghav Joshi.</p>
+        <div className="footer-links">
+          <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
       </footer>
     </div>
   );
