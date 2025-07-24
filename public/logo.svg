@@ -1,0 +1,14 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 70px;
+      fill: black;
+    }
+    .bg {
+      fill: white;
+    }
+  </style>
+  <rect width="100" height="100" rx="15" class="bg"/>
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" class="text">RJ</text>
+</svg>
