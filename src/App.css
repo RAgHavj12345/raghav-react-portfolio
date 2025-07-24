@@ -239,7 +239,7 @@ main {
         position: fixed;
         left: -100%;
         top: 0;
-        gap: 0;
+        gap: 2rem; /* This is the fix: Use gap for spacing */
         flex-direction: column;
         background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
@@ -248,7 +248,8 @@ main {
         text-align: center;
         transition: 0.3s;
         justify-content: center;
-        align-items: center; /* This is the fix */
+        align-items: center;
+        display: flex; /* Explicitly set display flex */
     }
 
     .nav-links.active {
@@ -256,7 +257,7 @@ main {
     }
 
     .nav-links li {
-        padding: 1.5rem 0; /* Increased padding for better spacing */
+        padding: 0; /* This is the fix: Remove padding from list items */
     }
     
     .nav-links a {
