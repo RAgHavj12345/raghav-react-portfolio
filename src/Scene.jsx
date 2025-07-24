@@ -11,12 +11,12 @@ function BackgroundShapes() {
         for (let i = 0; i < 50; i++) {
             const isSphere = Math.random() > 0.5;
             const position = new Vector3(
-                (Math.random() - 0.5) * 25,
-                (Math.random() - 0.5) * 25,
-                (Math.random() - 0.5) * 25
+                (Math.random() - 0.5) * 30,
+                (Math.random() - 0.5) * 30,
+                (Math.random() - 0.5) * 30
             );
-            const rotation = new Vector3(Math.random(), Math.random(), Math.random());
-            const scale = Math.random() * 0.1 + 0.05;
+            const rotation = new Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+            const scale = Math.random() * 0.15 + 0.05; // Slightly larger
             const speed = Math.random() * 0.1 + 0.05;
             shapeArray.push({ id: i, isSphere, position, rotation, scale, speed });
         }
@@ -43,10 +43,11 @@ function DriftingShape({ isSphere, position, rotation, scale, speed }) {
         }
     });
 
+    // This is the corrected part: using the 'rotation' prop with an array
     return (
-        <mesh ref={meshRef} position={position} rotation-x={rotation.x} rotation-y={rotation.y} scale={scale}>
+        <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
             {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-            <meshBasicMaterial color="#555555" wireframe />
+            <meshBasicMaterial color="#444444" wireframe />
         </mesh>
     );
 }
