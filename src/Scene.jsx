@@ -53,8 +53,8 @@ function DriftingShape({ isSphere, position, rotation, scale, speed }) {
     return (
         <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
             {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-            {/* Use a solid material that can be lit */}
-            <meshStandardMaterial color="#cccccc" roughness={0.8} />
+            {/* Use a darker solid material that is more visible against a white background */}
+            <meshStandardMaterial color="#888888" roughness={0.6} />
         </mesh>
     );
 }
@@ -96,13 +96,14 @@ function MainShapes() {
     <motion.group>
       {/* Main Shape */}
       <TorusKnot ref={mainShapeRef} args={[1, 0.3, 128, 16]}>
-        <meshStandardMaterial color="#111111" roughness={0.1} metalness={0.2} />
+        {/* Changed to wireframe for a classic look that doesn't need complex light */}
+        <meshBasicMaterial color="#000000" wireframe />
       </TorusKnot>
       
       {/* Orbiting Shape */}
       <mesh ref={orbitingShapeRef}>
         <sphereGeometry args={[0.2, 32, 32]} />
-        <meshStandardMaterial color="#333333" roughness={0.5} />
+        <meshBasicMaterial color="#333333" wireframe />
       </mesh>
     </motion.group>
   );
@@ -113,9 +114,9 @@ export default function Scene() {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
       <color attach="background" args={['#ffffff']} />
-      {/* Add lights to illuminate the solid shapes */}
-      <ambientLight intensity={1.5} />
-      <pointLight position={[10, 10, 10]} intensity={100} />
+      {/* Simplified and strengthened lighting to ensure visibility */}
+      <ambientLight intensity={5} />
+      <directionalLight position={[5, 5, 5]} intensity={5} />
       
       <BackgroundShapes />
       <MainShapes />
