@@ -1,25 +1,70 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { TorusKnot, Stars } from '@react-three/drei';
 import { motion } from 'framer-motion-3d';
-import { MathUtils } from 'three';
+import { MathUtils, Vector3 } from 'three';
 
-// This component defines the rotating 3D shape
-function Shape() {
+// This component creates the field of small, floating shapes in the background
+function BackgroundShapes() {
+    const shapes = useMemo(() => {
+        const shapeArray = [];
+        for (let i = 0; i < 50; i++) {
+            const isSphere = Math.random() > 0.5;
+            const position = new Vector3(
+                (Math.random() - 0.5) * 25,
+                (Math.random() - 0.5) * 25,
+                (Math.random() - 0.5) * 25
+            );
+            const rotation = new Vector3(Math.random(), Math.random(), Math.random());
+            const scale = Math.random() * 0.1 + 0.05;
+            const speed = Math.random() * 0.1 + 0.05;
+            shapeArray.push({ id: i, isSphere, position, rotation, scale, speed });
+        }
+        return shapeArray;
+    }, []);
+
+    return (
+        <group>
+            {shapes.map(shape => (
+                <DriftingShape key={shape.id} {...shape} />
+            ))}
+        </group>
+    );
+}
+
+// This component defines a single drifting shape
+function DriftingShape({ isSphere, position, rotation, scale, speed }) {
+    const meshRef = useRef();
+
+    useFrame((state, delta) => {
+        if (meshRef.current) {
+            meshRef.current.rotation.x += delta * speed * 0.5;
+            meshRef.current.rotation.y += delta * speed * 0.5;
+        }
+    });
+
+    return (
+        <mesh ref={meshRef} position={position} rotation-x={rotation.x} rotation-y={rotation.y} scale={scale}>
+            {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
+            <meshBasicMaterial color="#555555" wireframe />
+        </mesh>
+    );
+}
+
+
+// This component defines the main interactive shapes
+function MainShapes() {
   const mainShapeRef = useRef();
   const orbitingShapeRef = useRef();
 
-  // This hook runs on every frame, creating the animation
   useFrame((state, delta) => {
     const { mouse } = state;
     
     // Animate the main shape
     if (mainShapeRef.current) {
-      // Self-rotation
       mainShapeRef.current.rotation.x += delta * 0.1;
       mainShapeRef.current.rotation.y += delta * 0.1;
 
-      // Mouse-follow rotation
       const targetRotationX = mouse.y * 0.5;
       const targetRotationY = mouse.x * 0.5;
       mainShapeRef.current.rotation.x = MathUtils.lerp(mainShapeRef.current.rotation.x, targetRotationX, 0.05);
@@ -28,14 +73,14 @@ function Shape() {
     
     // Animate the orbiting shape
     if (orbitingShapeRef.current) {
-        orbitingShapeRef.current.position.x = Math.sin(state.clock.elapsedTime * 0.5) * 2.5;
-        orbitingShapeRef.current.position.z = Math.cos(state.clock.elapsedTime * 0.5) * 2.5;
+        orbitingShapeRef.current.position.x = Math.sin(state.clock.elapsedTime * 0.5) * 3;
+        orbitingShapeRef.current.position.z = Math.cos(state.clock.elapsedTime * 0.5) * 3;
         orbitingShapeRef.current.rotation.y += delta * 0.5;
     }
 
     // Camera parallax effect
-    state.camera.position.x = MathUtils.lerp(state.camera.position.x, mouse.x * 2, 0.05);
-    state.camera.position.y = MathUtils.lerp(state.camera.position.y, -mouse.y * 2, 0.05);
+    state.camera.position.x = MathUtils.lerp(state.camera.position.x, mouse.x * 1.5, 0.05);
+    state.camera.position.y = MathUtils.lerp(state.camera.position.y, -mouse.y * 1.5, 0.05);
     state.camera.lookAt(0, 0, 0);
   });
 
@@ -49,7 +94,7 @@ function Shape() {
       {/* Orbiting Shape */}
       <mesh ref={orbitingShapeRef}>
         <sphereGeometry args={[0.2, 32, 32]} />
-        <meshBasicMaterial color="#555555" wireframe />
+        <meshBasicMaterial color="#333333" wireframe />
       </mesh>
     </motion.group>
   );
@@ -58,10 +103,11 @@ function Shape() {
 // This is the main Scene component that you'll import into App.jsx
 export default function Scene() {
   return (
-    <Canvas camera={{ position: [0, 0, 7], fov: 45 }}>
+    <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
       <color attach="background" args={['#ffffff']} />
-      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
-      <Shape />
+      <Stars radius={150} depth={50} count={5000} factor={5} saturation={0} fade speed={1} />
+      <BackgroundShapes />
+      <MainShapes />
     </Canvas>
   );
 }
