@@ -8,15 +8,23 @@ import { MathUtils, Vector3 } from 'three';
 function BackgroundShapes() {
     const shapes = useMemo(() => {
         const shapeArray = [];
-        for (let i = 0; i < 50; i++) {
+        // Increase the number of shapes for a denser field
+        for (let i = 0; i < 80; i++) {
             const isSphere = Math.random() > 0.5;
             const position = new Vector3(
-                (Math.random() - 0.5) * 30,
-                (Math.random() - 0.5) * 30,
-                (Math.random() - 0.5) * 30
+                // Bring them closer to the center
+                (Math.random() - 0.5) * 25,
+                (Math.random() - 0.5) * 25,
+                (Math.random() - 0.5) * 25
             );
+            // Ensure no shapes are too close to the main object
+            if (position.length() < 6) {
+                position.normalize().multiplyScalar(6 + Math.random() * 6);
+            }
+
             const rotation = new Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-            const scale = Math.random() * 0.15 + 0.05; // Slightly larger
+            // Make them significantly larger and more visible
+            const scale = Math.random() * 0.2 + 0.1;
             const speed = Math.random() * 0.1 + 0.05;
             shapeArray.push({ id: i, isSphere, position, rotation, scale, speed });
         }
@@ -38,16 +46,16 @@ function DriftingShape({ isSphere, position, rotation, scale, speed }) {
 
     useFrame((state, delta) => {
         if (meshRef.current) {
-            meshRef.current.rotation.x += delta * speed * 0.5;
-            meshRef.current.rotation.y += delta * speed * 0.5;
+            meshRef.current.rotation.x += delta * speed * 0.2;
+            meshRef.current.rotation.y += delta * speed * 0.2;
         }
     });
 
-    // This is the corrected part: using the 'rotation' prop with an array
     return (
         <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
             {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-            <meshBasicMaterial color="#444444" wireframe />
+            {/* Make the color darker to contrast with the white background */}
+            <meshBasicMaterial color="#333333" wireframe />
         </mesh>
     );
 }
