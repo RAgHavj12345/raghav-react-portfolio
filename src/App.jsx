@@ -34,6 +34,7 @@ const App = () => {
             <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
+            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
 
           <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
@@ -55,7 +56,7 @@ const App = () => {
         >
           <motion.h1 variants={sectionVariants}>Raghav Joshi</motion.h1>
           <motion.p variants={sectionVariants} className="subtitle">Aspiring AI & Machine Learning Engineer</motion.p>
-          <motion.a variants={sectionVariants} href="mailto:raghavj12321@gmail.com" className="btn">Contact Me</motion.a>
+          <motion.a variants={sectionVariants} href="#contact" className="btn">Contact Me</motion.a>
         </motion.div>
       </header>
 
@@ -106,14 +107,27 @@ const App = () => {
             <p className="tech-stack"><strong>Tech:</strong> Python, OpenCV, TensorFlow</p>
           </motion.div>
         </motion.section>
+
+        <motion.section
+          id="contact"
+          className="content-section"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={sectionVariants}
+        >
+            <h2 className="section-title">Get In Touch</h2>
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
+            <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
+            <div className="footer-links">
+                <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </motion.section>
       </main>
 
       <footer className="footer">
         <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
-        <div className="footer-links">
-          <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
       </footer>
     </div>
   );

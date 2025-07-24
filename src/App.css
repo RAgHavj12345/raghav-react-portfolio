@@ -51,7 +51,7 @@ body {
     font-size: 1.8rem;
     color: var(--accent-color);
     text-decoration: none;
-    z-index: 1001; /* Ensure logo is above mobile menu */
+    z-index: 1001;
 }
 
 .nav-links {
@@ -84,7 +84,6 @@ body {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     background-color: var(--text-color);
 }
@@ -209,17 +208,14 @@ main {
     color: var(--subtle-text-color);
 }
 
-/* --- Footer --- */
-.footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 4rem;
+/* --- Contact & Footer --- */
+#contact p {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
 }
 
-.footer p {
-    color: var(--subtle-text-color);
-    margin-bottom: 1rem;
+.footer-links {
+    margin-top: 2rem;
 }
 
 .footer-links a {
@@ -227,10 +223,19 @@ main {
     text-decoration: none;
     margin: 0 1rem;
     transition: color 0.3s ease;
+    font-weight: 700;
 }
 
 .footer-links a:hover {
     color: var(--accent-color);
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+    color: var(--subtle-text-color);
 }
 
 /* --- Mobile Styles --- */
@@ -244,7 +249,7 @@ main {
         background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         width: 100%;
-        height: 100vh; /* This is the fix: Use vh for full viewport height */
+        height: 100vh;
         text-align: center;
         transition: 0.3s;
         justify-content: center;
@@ -266,7 +271,7 @@ main {
 
     .hamburger {
         display: block;
-        z-index: 1001; /* Ensure hamburger is above mobile menu */
+        z-index: 1001;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -277,7 +282,7 @@ main {
         transform: translateY(8px) rotate(45deg);
     }
 
-    .hamburger.active .bar:nth-child(3) {
+    .hamburger.active .bar:nth-al ternate-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
     
