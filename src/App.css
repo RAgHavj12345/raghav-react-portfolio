@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
-    /* New Light Mode color palette inspired by Homer */
-    --bg-color: #ffffff; /* Clean white background */
-    --text-color: #111111; /* Dark grey for main text */
-    --subtle-text-color: #666666; /* Lighter grey for secondary text */
-    --accent-color: #000000; /* Pure black for accents and titles */
-    --border-color: #eeeeee; /* Very light grey for subtle borders */
-    --card-bg: #ffffff; /* White cards, defined by borders/shadows */
+    --bg-color: #ffffff;
+    --text-color: #111111;
+    --subtle-text-color: #666666;
+    --accent-color: #000000;
+    --border-color: #eeeeee;
+    --card-bg: #ffffff;
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'DM Serif Display', serif;
 }
@@ -35,9 +34,16 @@ body {
     width: 90%;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.7); /* Frosted glass effect */
+    background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .logo {
@@ -45,25 +51,42 @@ body {
     font-size: 1.8rem;
     color: var(--accent-color);
     text-decoration: none;
+    z-index: 1001; /* Ensure logo is above mobile menu */
 }
 
-.navbar ul {
+.nav-links {
     list-style: none;
     display: flex;
     gap: 2rem;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
-.navbar a {
+.nav-links a {
     color: var(--subtle-text-color);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
-.navbar a:hover {
+.nav-links a:hover {
     color: var(--accent-color);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--text-color);
 }
 
 /* --- Hero Section --- */
@@ -208,4 +231,59 @@ main {
 
 .footer-links a:hover {
     color: var(--accent-color);
+}
+
+/* --- Mobile Styles --- */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        gap: 0;
+        flex-direction: column;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: 0.3s;
+        justify-content: center;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+    
+    .nav-links a {
+      font-size: 1.5rem;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 1001; /* Ensure hamburger is above mobile menu */
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero h2 {
+      font-size: 1.2rem;
+    }
 }

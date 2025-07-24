@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
 
@@ -13,16 +13,35 @@ const sectionVariants = {
 };
 
 const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  }
+
   return (
     <div className="app-container">
       <nav className="navbar">
-        <a href="#home" className="logo">RJ</a>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
-        </ul>
+        <div className="container">
+          <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
+          
+          <ul className={isMenuOpen ? 'nav-links active' : 'nav-links'}>
+            <li><a href="#about" onClick={closeMenu}>About</a></li>
+            <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+            <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
+            <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
+          </ul>
+
+          <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+        </div>
       </nav>
 
       <header id="home" className="hero">
