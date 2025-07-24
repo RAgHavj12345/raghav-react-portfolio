@@ -4,28 +4,20 @@ import { TorusKnot } from '@react-three/drei';
 import { motion } from 'framer-motion-3d';
 import { MathUtils, Vector3 } from 'three';
 
-// This component creates the field of small, floating shapes in the background
+// This component creates the field of moving shapes in the background
 function BackgroundShapes() {
     const shapes = useMemo(() => {
         const shapeArray = [];
-        // Increase the number of shapes for a denser field
         for (let i = 0; i < 80; i++) {
             const isSphere = Math.random() > 0.5;
             const position = new Vector3(
-                // Bring them closer to the center
-                (Math.random() - 0.5) * 20,
-                (Math.random() - 0.5) * 20,
-                (Math.random() - 0.5) * 20
+                (Math.random() - 0.5) * 30,
+                (Math.random() - 0.5) * 30,
+                (Math.random() - 0.5) * 30
             );
-            // Ensure no shapes are too close to the main object
-            if (position.length() < 8) {
-                position.normalize().multiplyScalar(8 + Math.random() * 8);
-            }
-
             const rotation = new Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-            // Make them significantly larger and more visible
-            const scale = Math.random() * 0.4 + 0.2;
-            const speed = Math.random() * 0.1 + 0.05;
+            const scale = Math.random() * 0.3 + 0.2;
+            const speed = Math.random() * 0.2 + 0.1;
             shapeArray.push({ id: i, isSphere, position, rotation, scale, speed });
         }
         return shapeArray;
@@ -46,16 +38,23 @@ function DriftingShape({ isSphere, position, rotation, scale, speed }) {
 
     useFrame((state, delta) => {
         if (meshRef.current) {
-            meshRef.current.rotation.x += delta * speed * 0.2;
-            meshRef.current.rotation.y += delta * speed * 0.2;
+            // Add drifting motion
+            meshRef.current.position.y += delta * speed;
+            meshRef.current.rotation.x += delta * speed * 0.5;
+            meshRef.current.rotation.y += delta * speed * 0.5;
+
+            // Reset position when it goes off-screen to create a loop
+            if (meshRef.current.position.y > 15) {
+                meshRef.current.position.y = -15;
+            }
         }
     });
 
     return (
         <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
             {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-            {/* Make the color black for maximum contrast */}
-            <meshBasicMaterial color="#000000" wireframe />
+            {/* Use a solid material that can be lit */}
+            <meshStandardMaterial color="#cccccc" roughness={0.8} />
         </mesh>
     );
 }
@@ -97,13 +96,13 @@ function MainShapes() {
     <motion.group>
       {/* Main Shape */}
       <TorusKnot ref={mainShapeRef} args={[1, 0.3, 128, 16]}>
-        <meshBasicMaterial color="#111111" wireframe />
+        <meshStandardMaterial color="#111111" roughness={0.1} metalness={0.2} />
       </TorusKnot>
       
       {/* Orbiting Shape */}
       <mesh ref={orbitingShapeRef}>
         <sphereGeometry args={[0.2, 32, 32]} />
-        <meshBasicMaterial color="#333333" wireframe />
+        <meshStandardMaterial color="#333333" roughness={0.5} />
       </mesh>
     </motion.group>
   );
@@ -114,8 +113,10 @@ export default function Scene() {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
       <color attach="background" args={['#ffffff']} />
-      {/* Stars are temporarily removed to ensure shapes are visible */}
-      {/* <Stars radius={150} depth={50} count={5000} factor={5} saturation={0} fade speed={1} /> */}
+      {/* Add lights to illuminate the solid shapes */}
+      <ambientLight intensity={1.5} />
+      <pointLight position={[10, 10, 10]} intensity={100} />
+      
       <BackgroundShapes />
       <MainShapes />
     </Canvas>
