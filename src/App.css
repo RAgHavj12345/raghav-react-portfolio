@@ -221,7 +221,7 @@ main {
 }
 
 .footer-links {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .footer-links a {
@@ -238,10 +238,9 @@ main {
 
 .footer {
     text-align: center;
-    padding: 2rem;
+    padding: 3rem 2rem;
     border-top: 1px solid var(--border-color);
     margin-top: 4rem;
-    color: var(--subtle-text-color);
 }
 
 /* --- Mobile Styles --- */
@@ -256,12 +255,10 @@ main {
         width: 100%;
         height: 100vh;
         transition: 0.3s;
-        
-        /* --- THIS IS THE FIX --- */
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem; /* Use gap for spacing */
+        gap: 2rem;
     }
 
     .nav-links.active {
@@ -269,7 +266,7 @@ main {
     }
 
     .nav-links li {
-        padding: 0; /* Remove padding from list items */
+        padding: 0;
     }
     
     .nav-links a {
@@ -289,7 +286,7 @@ main {
         transform: translateY(8px) rotate(45deg);
     }
 
-    .hamburger.active .bar:nth-child(3) {
+    .hamburger.active .bar:nth-ch il d(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
     

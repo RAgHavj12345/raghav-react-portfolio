@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Scene from './Scene'; // Import the new 3D scene component
 import './App.css';
 
 // Animation variants for sections
@@ -21,10 +20,6 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div className="background-scene">
-        <Scene />
-      </div>
-
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
@@ -34,6 +29,7 @@ const App = () => {
             <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
+            <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
 
           <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
@@ -72,8 +68,6 @@ const App = () => {
           <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
         </motion.section>
 
-        {/* ... Rest of your sections (Skills, Projects, etc.) remain the same ... */}
-        
         <motion.section
           id="skills"
           className="content-section"
@@ -109,7 +103,7 @@ const App = () => {
           </motion.div>
         </motion.section>
 
-         <motion.section
+        <motion.section
           id="contact"
           className="content-section"
           initial="hidden"
@@ -121,7 +115,6 @@ const App = () => {
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
         </motion.section>
-
       </main>
 
       <footer className="footer">
