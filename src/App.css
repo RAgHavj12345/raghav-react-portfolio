@@ -248,6 +248,7 @@ main {
         text-align: center;
         transition: 0.3s;
         justify-content: center;
+        align-items: center; /* This is the fix */
     }
 
     .nav-links.active {
@@ -255,7 +256,7 @@ main {
     }
 
     .nav-links li {
-        padding: 1rem 0;
+        padding: 1.5rem 0; /* Increased padding for better spacing */
     }
     
     .nav-links a {
