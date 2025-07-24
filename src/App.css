@@ -24,7 +24,7 @@ body {
 }
 
 .app-container {
-    position: relative; /* Needed for the background scene */
+    position: relative;
     z-index: 1;
 }
 
@@ -34,8 +34,8 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1; /* Place it behind all other content */
-    opacity: 0.15; /* Make it subtle */
+    z-index: -1;
+    opacity: 0.15;
 }
 
 /* --- Navigation --- */
@@ -158,7 +158,7 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 2rem;
-    background-color: var(--bg-color); /* Give main a solid background to cover the 3D scene when scrolling */
+    background-color: var(--bg-color);
 }
 
 .content-section {
