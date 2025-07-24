@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { TorusKnot, Stars } from '@react-three/drei';
+import { TorusKnot } from '@react-three/drei';
 import { motion } from 'framer-motion-3d';
 import { MathUtils, Vector3 } from 'three';
 
@@ -13,18 +13,18 @@ function BackgroundShapes() {
             const isSphere = Math.random() > 0.5;
             const position = new Vector3(
                 // Bring them closer to the center
-                (Math.random() - 0.5) * 25,
-                (Math.random() - 0.5) * 25,
-                (Math.random() - 0.5) * 25
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 20,
+                (Math.random() - 0.5) * 20
             );
             // Ensure no shapes are too close to the main object
-            if (position.length() < 6) {
-                position.normalize().multiplyScalar(6 + Math.random() * 6);
+            if (position.length() < 8) {
+                position.normalize().multiplyScalar(8 + Math.random() * 8);
             }
 
             const rotation = new Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
             // Make them significantly larger and more visible
-            const scale = Math.random() * 0.2 + 0.1;
+            const scale = Math.random() * 0.4 + 0.2;
             const speed = Math.random() * 0.1 + 0.05;
             shapeArray.push({ id: i, isSphere, position, rotation, scale, speed });
         }
@@ -54,8 +54,8 @@ function DriftingShape({ isSphere, position, rotation, scale, speed }) {
     return (
         <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
             {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-            {/* Make the color darker to contrast with the white background */}
-            <meshBasicMaterial color="#333333" wireframe />
+            {/* Make the color black for maximum contrast */}
+            <meshBasicMaterial color="#000000" wireframe />
         </mesh>
     );
 }
@@ -114,7 +114,8 @@ export default function Scene() {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
       <color attach="background" args={['#ffffff']} />
-      <Stars radius={150} depth={50} count={5000} factor={5} saturation={0} fade speed={1} />
+      {/* Stars are temporarily removed to ensure shapes are visible */}
+      {/* <Stars radius={150} depth={50} count={5000} factor={5} saturation={0} fade speed={1} /> */}
       <BackgroundShapes />
       <MainShapes />
     </Canvas>
