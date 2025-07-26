@@ -1,3 +1,4 @@
+/* --- src/App.css --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
@@ -24,9 +25,17 @@ body {
 }
 
 .app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.background-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Place it behind all other content */
 }
 
 /* --- Navigation --- */
@@ -102,6 +111,8 @@ body {
     min-height: 100vh;
     text-align: center;
     padding: 2rem;
+    position: relative; /* Ensure content stays above background */
+    z-index: 2;
 }
 
 .hero-content {
@@ -149,6 +160,9 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 2rem;
+    background-color: var(--bg-color); /* Give main a solid background */
+    position: relative; /* Ensure content stays above background */
+    z-index: 2;
 }
 
 .content-section {
@@ -220,6 +234,19 @@ main {
     margin: 0 auto 2rem auto;
 }
 
+.footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+    background-color: var(--bg-color);
+}
+
+.footer p {
+    color: var(--subtle-text-color);
+    margin-bottom: 1rem;
+}
+
 .footer-links {
     margin-top: 1rem;
 }
@@ -236,29 +263,23 @@ main {
     color: var(--accent-color);
 }
 
-.footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 4rem;
-}
-
 /* --- Mobile Styles --- */
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
         left: -100%;
         top: 0;
+        gap: 2rem;
         flex-direction: column;
         background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         width: 100%;
         height: 100vh;
+        text-align: center;
         transition: 0.3s;
-        display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        display: flex;
     }
 
     .nav-links.active {
@@ -286,7 +307,7 @@ main {
         transform: translateY(8px) rotate(45deg);
     }
 
-    .hamburger.active .bar:nth-ch il d(3) {
+    .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
     
@@ -297,14 +318,4 @@ main {
     .hero h2 {
       font-size: 1.2rem;
     }
-}
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
-  display: block;
-  pointer-events: none;
 }

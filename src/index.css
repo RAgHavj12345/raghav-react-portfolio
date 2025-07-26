@@ -10,7 +10,13 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure the body and React root take up the full screen */
+body, #root {
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Set a minimum width for responsiveness */
 body {
     min-width: 320px;
-    min-height: 100vh;
 }
