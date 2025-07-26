@@ -31,7 +31,7 @@ body {
 
 /* --- New Pitchfork Header Styles --- */
 .navbar {
-    padding: 0; /* Remove old padding */
+    padding: 0;
     position: fixed;
     width: 100%;
     top: 0;
@@ -196,11 +196,7 @@ main {
     text-align: center;
 }
 
-.section-title {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-}
+/* .section-title is now handled by ScrollFloat.css */
 
 .skills-grid {
     display: flex;
@@ -273,7 +269,7 @@ main {
     }
 
     .navbar .container {
-        justify-content: center; /* Center the logo on mobile */
+        justify-content: center;
     }
 
     .logo {
