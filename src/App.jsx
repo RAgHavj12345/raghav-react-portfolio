@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import ScrollFloat from './ScrollFloat'; // Import the new component
+import BlobCursor from './BlobCursor'; // Import the new BlobCursor component
 import './App.css';
 
 // Animation variants for sections
@@ -21,6 +21,20 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <BlobCursor
+        blobType="circle"
+        fillColor="#000000"
+        trailCount={3}
+        sizes={[60, 125, 75]}
+        innerSizes={[20, 35, 25]}
+        innerColor="rgba(255,255,255,0.8)"
+        opacities={[0.6, 0.6, 0.6]}
+        shadowColor="rgba(0,0,0,0.15)"
+        filterStdDeviation={30}
+        useFilter={true}
+        zIndex={100}
+      />
+
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
@@ -65,7 +79,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
-          <ScrollFloat>About Me</ScrollFloat>
+          <h2 className="section-title">About Me</h2>
           <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
         </motion.section>
 
@@ -77,7 +91,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <ScrollFloat>Skills</ScrollFloat>
+          <h2 className="section-title">Skills</h2>
           <div className="skills-grid">
             {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
               <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#000000', color: '#ffffff' }}>
@@ -95,7 +109,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <ScrollFloat>Featured Project</ScrollFloat>
+          <h2 className="section-title">Featured Project</h2>
           <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
             <h3>Real-Time Face and Behaviour Analysis System</h3>
             <p className="project-status">(In Progress)</p>
@@ -112,7 +126,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
-            <ScrollFloat>Get In Touch</ScrollFloat>
+            <h2 className="section-title">Get In Touch</h2>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
         </motion.section>

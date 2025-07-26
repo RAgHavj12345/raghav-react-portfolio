@@ -21,6 +21,12 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-sans);
+    cursor: none; /* Hide the default system cursor */
+}
+
+/* Add a custom cursor for clickable elements */
+a, button, .skill-item, .hamburger {
+    cursor: none;
 }
 
 .app-container {
@@ -156,7 +162,11 @@ main {
     text-align: center;
 }
 
-/* The old .section-title class is no longer needed */
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
 
 .skills-grid {
     display: flex;
