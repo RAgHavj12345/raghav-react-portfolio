@@ -72,7 +72,7 @@ const App = () => {
           <h2 className="section-title">About Me</h2>
           <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
         </motion.section>
-
+        
         <motion.section
           id="skills"
           className="content-section"
@@ -108,7 +108,7 @@ const App = () => {
           </motion.div>
         </motion.section>
 
-        <motion.section
+         <motion.section
           id="contact"
           className="content-section"
           initial="hidden"
@@ -120,10 +120,11 @@ const App = () => {
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
         </motion.section>
+
       </main>
 
       <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
+        <p>&copy; 2025 Raghav Joshi.</p>
         <div className="footer-links">
           <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>

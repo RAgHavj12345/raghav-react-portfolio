@@ -1,4 +1,3 @@
-/* --- src/App.css --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
@@ -36,8 +35,7 @@ body {
     width: 100%;
     height: 100vh;
     z-index: -1;
-    /* This is the fix: ensures mouse events are captured by the canvas */
-    pointer-events: auto; 
+    pointer-events: auto; /* This is crucial for the 3D scene to receive mouse events */
 }
 
 /* --- Navigation --- */
@@ -61,6 +59,11 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+}
+
+.logo, .nav-links a, .hamburger {
+    /* This makes sure all navbar elements are clickable */
+    pointer-events: auto;
 }
 
 .logo {
@@ -115,35 +118,17 @@ body {
     padding: 2rem;
     position: relative;
     z-index: 2;
+    /* This is the key fix: it makes the hero section transparent to mouse events */
+    pointer-events: none;
 }
 
 .hero-content {
     max-width: 800px;
-    /* This allows mouse events to pass through the text to the canvas behind it */
-    pointer-events: none; 
-}
-
-.hero-content .btn {
-    /* Make the button clickable again */
-    pointer-events: auto; 
-}
-
-.hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 10vw, 6rem);
-    line-height: 1;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: var(--subtle-text-color);
-    letter-spacing: 0.5px;
-    margin-bottom: 2rem;
 }
 
 .btn {
+    /* This makes the button clickable again, even though its parent is transparent */
+    pointer-events: auto;
     display: inline-block;
     background: var(--accent-color);
     color: var(--bg-color);
@@ -161,6 +146,21 @@ body {
     transform: scale(1.05);
     background-color: #333333;
     border-color: #333333;
+}
+
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--subtle-text-color);
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
 }
 
 /* --- Main Content --- */

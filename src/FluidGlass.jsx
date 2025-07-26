@@ -14,7 +14,7 @@ const Lens = ({ children, ...props }) => {
   const [scene] = useState(() => new THREE.Scene())
 
   // This hook runs on every frame and creates the animation
-  useFrame((state, delta) => {
+  useFrame((state) => {
     const { gl, pointer, camera } = state
     
     // This is the corrected animation logic
