@@ -1,14 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef, useEffect, useCallback, useMemo, forwardRef } from "react";
+import { useRef, useEffect, forwardRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { EffectComposer, wrapEffect } from "@react-three/postprocessing";
 import { Effect } from "postprocessing";
 import * as THREE from "three";
-import { gsap } from "gsap";
-import { InertiaPlugin } from "gsap/InertiaPlugin";
 import "./Dither.css";
-
-gsap.registerPlugin(InertiaPlugin);
 
 const waveVertexShader = `
 precision highp float;
@@ -105,8 +101,8 @@ const ditherFragmentShader = `
 precision highp float;
 uniform float colorNum;
 uniform float pixelSize;
-uniform vec2 resolution; // Added resolution uniform
-uniform sampler2D inputBuffer; // Added inputBuffer uniform
+uniform vec2 resolution; // THIS LINE WAS MISSING
+uniform sampler2D inputBuffer; // THIS LINE WAS MISSING
 
 const float bayerMatrix8x8[64] = float[64](
   0.0/64.0, 48.0/64.0, 12.0/64.0, 60.0/64.0,  3.0/64.0, 51.0/64.0, 15.0/64.0, 63.0/64.0,
@@ -274,8 +270,7 @@ export default function Dither({
     <Canvas
       className="dither-container"
       camera={{ position: [0, 0, 6] }}
-      dpr={window.devicePixelRatio}
-      gl={{ antialias: true, preserveDrawingBuffer: true }}
+      dpr={window.devicePixelRatio || 1}
     >
       <DitheredWaves
         waveSpeed={waveSpeed}
