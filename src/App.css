@@ -1,12 +1,13 @@
+/* --- src/App.css --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
-    --bg-color: #ffffff;
-    --text-color: #111111;
-    --subtle-text-color: #666666;
-    --accent-color: #000000;
-    --border-color: #eeeeee;
-    --card-bg: rgba(255, 255, 255, 0.8); /* Semi-transparent card background */
+    --bg-color: #000000;
+    --text-color: #fafafa;
+    --subtle-text-color: #888888;
+    --accent-color: #ffffff;
+    --border-color: #222222;
+    --card-bg: rgba(10, 10, 10, 0.7); /* Semi-transparent card background */
     --font-sans: 'Inter', sans-serif;
     --font-serif: 'DM Serif Display', serif;
     --navbar-height: 80px;
@@ -39,7 +40,7 @@ body {
     width: 90%;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     height: 50px;
@@ -139,8 +140,9 @@ body {
 
 .btn:hover {
     transform: scale(1.05);
-    background-color: #333333;
-    border-color: #333333;
+    background-color: #cccccc;
+    color: #000000;
+    border-color: #cccccc;
 }
 
 /* --- Main Content --- */
@@ -152,9 +154,9 @@ main {
 }
 
 .content-section {
-    padding: 6rem 0;
+    padding: 6rem 2rem;
     text-align: center;
-    background-color: var(--card-bg); /* Give sections a background */
+    background-color: var(--card-bg);
     backdrop-filter: blur(5px);
     border-radius: 15px;
     margin-bottom: 2rem;
@@ -182,11 +184,6 @@ main {
     transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-.skill-item:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-}
-
 .project-card {
     border: 1px solid var(--border-color);
     border-radius: 10px;
@@ -196,7 +193,7 @@ main {
 }
 
 .project-card:hover {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(255,255,255,0.1);
 }
 
 .project-card h3 {
@@ -250,7 +247,7 @@ main {
         top: 0;
         gap: 2rem;
         flex-direction: column;
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(10px);
         width: 100%;
         height: 100vh;
@@ -278,6 +275,10 @@ main {
         z-index: 1001;
     }
 
+    .hamburger.active .bar {
+        background-color: var(--text-color);
+    }
+    
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }

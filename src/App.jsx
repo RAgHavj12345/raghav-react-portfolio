@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import DotGrid from './DotGrid'; // Import the new DotGrid component
+import Dither from './Dither'; // Import the new Dither component
 import './App.css';
 
 // Animation variants for sections
@@ -21,7 +21,12 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <DotGrid /> 
+      <Dither
+        waveColor={[0.1, 0.1, 0.1]} // Dark grey waves for a subtle effect
+        colorNum={3} // Fewer colors for a more minimal look
+        waveAmplitude={0.2}
+        mouseRadius={0.2}
+      />
       
       <nav className="navbar">
         <div className="container">
@@ -82,7 +87,7 @@ const App = () => {
           <h2 className="section-title">Skills</h2>
           <div className="skills-grid">
             {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#000000', color: '#ffffff' }}>
+              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}>
                 {skill}
               </motion.div>
             ))}
@@ -98,7 +103,7 @@ const App = () => {
           variants={sectionVariants}
         >
           <h2 className="section-title">Featured Project</h2>
-          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
+          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
             <h3>Real-Time Face and Behaviour Analysis System</h3>
             <p className="project-status">(In Progress)</p>
             <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
@@ -121,7 +126,7 @@ const App = () => {
       </main>
 
       <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
+        <p>&copy; 2025 Raghav Joshi.</p>
         <div className="footer-links">
           <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
