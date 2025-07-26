@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Dither from './Dither'; // Import the new Dither component
+import Dither from './Dither';
 import './App.css';
 
-// Animation variants for sections
+// Animation config
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: 0.8, ease: 'easeOut' }
   }
 };
 
@@ -22,16 +22,20 @@ const App = () => {
   return (
     <div className="app-container">
       <Dither
-        waveColor={[0.1, 0.1, 0.1]} // Dark grey waves for a subtle effect
-        colorNum={3} // Fewer colors for a more minimal look
-        waveAmplitude={0.2}
+        waveSpeed={0.05}
+        waveFrequency={3}
+        waveAmplitude={0.3}
+        waveColor={[0.1, 0.1, 0.1]}
+        colorNum={3}
+        pixelSize={2}
+        disableAnimation={false}
+        enableMouseInteraction={true}
         mouseRadius={0.2}
       />
-      
+
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
-          
           <ul className={isMenuOpen ? 'nav-links active' : 'nav-links'}>
             <li><a href="#about" onClick={closeMenu}>About</a></li>
             <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
@@ -39,7 +43,6 @@ const App = () => {
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
           </ul>
-
           <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
             <span className="bar"></span>
             <span className="bar"></span>
@@ -53,13 +56,15 @@ const App = () => {
           className="hero-content"
           initial="hidden"
           animate="visible"
-          variants={{
-            visible: { transition: { staggerChildren: 0.3 } }
-          }}
+          variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
         >
           <motion.h1 variants={sectionVariants}>Raghav Joshi</motion.h1>
-          <motion.p variants={sectionVariants} className="subtitle">Aspiring AI & Machine Learning Engineer</motion.p>
-          <motion.a variants={sectionVariants} href="#contact" className="btn">Contact Me</motion.a>
+          <motion.p variants={sectionVariants} className="subtitle">
+            Aspiring AI & Machine Learning Engineer
+          </motion.p>
+          <motion.a variants={sectionVariants} href="#contact" className="btn">
+            Contact Me
+          </motion.a>
         </motion.div>
       </header>
 
@@ -73,7 +78,9 @@ const App = () => {
           variants={sectionVariants}
         >
           <h2 className="section-title">About Me</h2>
-          <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
+          <p>
+            I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.
+          </p>
         </motion.section>
 
         <motion.section
@@ -87,7 +94,11 @@ const App = () => {
           <h2 className="section-title">Skills</h2>
           <div className="skills-grid">
             {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}>
+              <motion.div
+                key={skill}
+                className="skill-item"
+                whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}
+              >
                 {skill}
               </motion.div>
             ))}
@@ -103,10 +114,15 @@ const App = () => {
           variants={sectionVariants}
         >
           <h2 className="section-title">Featured Project</h2>
-          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
+          <motion.div
+            className="project-card"
+            whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}
+          >
             <h3>Real-Time Face and Behaviour Analysis System</h3>
             <p className="project-status">(In Progress)</p>
-            <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
+            <p>
+              This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.
+            </p>
             <p className="tech-stack"><strong>Tech:</strong> Python, OpenCV, TensorFlow</p>
           </motion.div>
         </motion.section>
@@ -119,9 +135,9 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
-            <h2 className="section-title">Get In Touch</h2>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
-            <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
+          <h2 className="section-title">Get In Touch</h2>
+          <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
+          <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
         </motion.section>
       </main>
 
