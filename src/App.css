@@ -35,7 +35,9 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1; /* Place it behind all other content */
+    z-index: -1;
+    /* This is the fix: ensures mouse events are captured by the canvas */
+    pointer-events: auto; 
 }
 
 /* --- Navigation --- */
@@ -111,12 +113,19 @@ body {
     min-height: 100vh;
     text-align: center;
     padding: 2rem;
-    position: relative; /* Ensure content stays above background */
+    position: relative;
     z-index: 2;
 }
 
 .hero-content {
     max-width: 800px;
+    /* This allows mouse events to pass through the text to the canvas behind it */
+    pointer-events: none; 
+}
+
+.hero-content .btn {
+    /* Make the button clickable again */
+    pointer-events: auto; 
 }
 
 .hero h1 {
@@ -160,8 +169,8 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 2rem;
-    background-color: var(--bg-color); /* Give main a solid background */
-    position: relative; /* Ensure content stays above background */
+    background-color: var(--bg-color);
+    position: relative;
     z-index: 2;
 }
 
