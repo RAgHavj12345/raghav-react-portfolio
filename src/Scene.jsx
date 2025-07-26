@@ -1,107 +1,85 @@
-// src/Scene.jsx
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { TorusKnot } from '@react-three/drei';
-import { motion } from 'framer-motion-3d';
-import { MathUtils, Vector3, Color } from 'three';
+import { Torus, Icosahedron, Box } from '@react-three/drei';
+import { MathUtils } from 'three';
 
-// Utility: Bright random colors
-function getRandomBrightColor() {
-  const hue = Math.floor(Math.random() * 360);
-  return new Color(`hsl(${hue}, 100%, 70%)`);
-}
-
-function DriftingShape({ isSphere, position, rotation, scale, speed }) {
+// This component creates a single floating shape
+function FloatingShape({ geometry, position, rotationSpeed }) {
   const meshRef = useRef();
-  const color = useMemo(() => getRandomBrightColor(), []);
 
-  useFrame((_, delta) => {
+  useFrame((state, delta) => {
     if (meshRef.current) {
-      meshRef.current.position.y += delta * speed;
-      meshRef.current.rotation.x += delta * speed * 0.5;
-      meshRef.current.rotation.y += delta * speed * 0.5;
-
-      if (meshRef.current.position.y > 15) {
-        meshRef.current.position.y = -15;
-      }
+      meshRef.current.rotation.x += delta * rotationSpeed.x;
+      meshRef.current.rotation.y += delta * rotationSpeed.y;
     }
   });
 
   return (
-    <mesh ref={meshRef} position={position} rotation={[rotation.x, rotation.y, rotation.z]} scale={scale}>
-      {isSphere ? <sphereGeometry args={[1, 16, 16]} /> : <boxGeometry args={[1, 1, 1]} />}
-      <meshBasicMaterial color={color} />
+    <mesh ref={meshRef} position={position}>
+      {geometry}
+      <meshStandardMaterial color="#555555" roughness={0.6} metalness={0.2} />
     </mesh>
   );
 }
 
+// This component creates the entire field of shapes
 function BackgroundShapes() {
   const shapes = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < 80; i++) {
-      const isSphere = Math.random() > 0.5;
-      const pos = new Vector3((Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30, (Math.random() - 0.5) * 30);
-      if (pos.length() < 8) pos.normalize().multiplyScalar(8 + Math.random() * 8);
-      arr.push({
+    const shapeArray = [];
+    const geometries = [
+      <Torus args={[1, 0.2, 16, 100]} />,
+      <Icosahedron args={[1, 0]} />,
+      <Box args={[1, 1, 1]} />,
+    ];
+
+    for (let i = 0; i < 50; i++) {
+      shapeArray.push({
         id: i,
-        isSphere,
-        position: pos,
-        rotation: new Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI),
-        scale: Math.random() * 0.3 + 0.2,
-        speed: Math.random() * 0.2 + 0.1,
+        geometry: geometries[i % 3],
+        position: [
+          (Math.random() - 0.5) * 25,
+          (Math.random() - 0.5) * 25,
+          (Math.random() - 0.5) * 25,
+        ],
+        rotationSpeed: {
+          x: Math.random() * 0.1,
+          y: Math.random() * 0.1,
+        },
       });
     }
-    return arr;
+    return shapeArray;
   }, []);
 
-  return <group>{shapes.map(shape => <DriftingShape key={shape.id} {...shape} />)}</group>;
-}
-
-function MainShapes() {
-  const mainRef = useRef();
-  const orbitRef = useRef();
-
-  useFrame((state, delta) => {
-    const { mouse } = state;
-
-    if (mainRef.current) {
-      mainRef.current.rotation.x = MathUtils.lerp(mainRef.current.rotation.x, mouse.y * 0.5, 0.05);
-      mainRef.current.rotation.y = MathUtils.lerp(mainRef.current.rotation.y, mouse.x * 0.5, 0.05);
-    }
-
-    if (orbitRef.current) {
-      orbitRef.current.position.x = Math.sin(state.clock.elapsedTime * 0.5) * 3;
-      orbitRef.current.position.z = Math.cos(state.clock.elapsedTime * 0.5) * 3;
-      orbitRef.current.rotation.y += delta * 0.5;
-    }
-
-    state.camera.position.x = MathUtils.lerp(state.camera.position.x, mouse.x * 1.5, 0.05);
-    state.camera.position.y = MathUtils.lerp(state.camera.position.y, -mouse.y * 1.5, 0.05);
-    state.camera.lookAt(0, 0, 0);
-  });
-
   return (
-    <motion.group>
-      <TorusKnot ref={mainRef} args={[1, 0.3, 128, 16]}>
-        <meshStandardMaterial color="#111" roughness={0.2} metalness={0.5} />
-      </TorusKnot>
-      <mesh ref={orbitRef}>
-        <sphereGeometry args={[0.2, 32, 32]} />
-        <meshStandardMaterial color="#444" />
-      </mesh>
-    </motion.group>
+    <group>
+      {shapes.map(shape => (
+        <FloatingShape key={shape.id} {...shape} />
+      ))}
+    </group>
   );
 }
 
+// This is the main Scene component
 export default function Scene() {
+  const cameraRef = useRef();
+
+  useFrame((state) => {
+    const { mouse } = state;
+    if (cameraRef.current) {
+      // Camera parallax effect
+      cameraRef.current.position.x = MathUtils.lerp(cameraRef.current.position.x, mouse.x * 1.5, 0.05);
+      cameraRef.current.position.y = MathUtils.lerp(cameraRef.current.position.y, -mouse.y * 1.5, 0.05);
+      cameraRef.current.lookAt(0, 0, 0);
+    }
+  });
+
   return (
-    <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
-      <color attach="background" args={['#ffffff']} />
-      <ambientLight intensity={1.5} />
+    <Canvas camera={{ position: [0, 0, 10], fov: 50, ref: cameraRef }}>
+      <color attach="background" args={['#000000']} />
+      <ambientLight intensity={1} />
       <directionalLight position={[10, 10, 5]} intensity={2} />
       <pointLight position={[-10, -10, -10]} intensity={1.5} />
       <BackgroundShapes />
-      <MainShapes />
     </Canvas>
   );
 }
