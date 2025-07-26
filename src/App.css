@@ -118,7 +118,7 @@ body {
     padding: 2rem;
     position: relative;
     z-index: 2;
-    /* This is the key fix: it makes the hero section transparent to mouse events */
+    /* This makes the hero section transparent to mouse events */
     pointer-events: none;
 }
 
@@ -154,6 +154,13 @@ body {
     line-height: 1;
     margin-bottom: 1rem;
     color: var(--accent-color);
+    /* --- THIS IS THE FIX --- */
+    pointer-events: auto; /* Make the h1 interactive */
+    transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+.hero h1:hover {
+    transform: scale(1.1); /* Magnify on hover */
 }
 
 .subtitle {
