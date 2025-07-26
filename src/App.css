@@ -154,9 +154,11 @@ body {
     line-height: 1;
     margin-bottom: 1rem;
     color: var(--accent-color);
-    /* --- THIS IS THE FIX --- */
     pointer-events: auto; /* Make the h1 interactive */
     transition: transform 0.3s ease; /* Add a smooth transition */
+    /* --- THIS IS THE FIX --- */
+    display: inline-block; /* Give the element a defined block for hovering */
+    padding: 0.2rem; /* Add a little extra hover area */
 }
 
 .hero h1:hover {
