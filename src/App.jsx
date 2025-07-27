@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Galaxy from './Galaxy';
-import ScrollFloat from './ScrollFloat';
+import ScrollFloat from './ScrollFloat'; // Import the new component
 import './App.css';
 
 // Animation variants for sections
@@ -22,14 +21,6 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Galaxy 
-        mouseRepulsion={true}
-        density={1.2}
-        glowIntensity={0.5}
-        saturation={0}
-        hueShift={0}
-      />
-      
       <nav className="navbar">
         <div className="container">
           <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
@@ -98,7 +89,7 @@ const App = () => {
           <ScrollFloat>Skills</ScrollFloat>
           <div className="skills-grid">
             {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}>
+              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#000000', color: '#ffffff' }}>
                 {skill}
               </motion.div>
             ))}
@@ -114,7 +105,7 @@ const App = () => {
           variants={sectionVariants}
         >
           <ScrollFloat>Featured Project</ScrollFloat>
-          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
+          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(0,0,0,0.1)' }}>
             <h3>Real-Time Face and Behaviour Analysis System</h3>
             <p className="project-status">(In Progress)</p>
             <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
@@ -137,7 +128,7 @@ const App = () => {
       </main>
 
       <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi.</p>
+        <p>&copy; 2025 Raghav Joshi. Let's Get It.</p>
       </footer>
     </div>
   );
