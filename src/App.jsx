@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Galaxy from './Galaxy';
 import ScrollFloat from './ScrollFloat';
+import StarBorder from './StarBorder'; // Import the new StarBorder component
 import './App.css';
 
 // Animation variants for sections
@@ -75,19 +76,21 @@ const App = () => {
       </header>
 
       <main>
-        <motion.section
+        <motion.div
           id="about"
           className="content-section"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <ScrollFloat>About Me</ScrollFloat>
-          <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
-        </motion.section>
+          <StarBorder color="#ffffff" speed="8s">
+            <ScrollFloat>About Me</ScrollFloat>
+            <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
+          </StarBorder>
+        </motion.div>
 
-        <motion.section
+        <motion.div
           id="skills"
           className="content-section"
           initial="hidden"
@@ -95,17 +98,19 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <ScrollFloat>Skills</ScrollFloat>
-          <div className="skills-grid">
-            {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-              <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}>
-                {skill}
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
+          <StarBorder color="#ffffff" speed="7s">
+            <ScrollFloat>Skills</ScrollFloat>
+            <div className="skills-grid">
+              {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
+                <motion.div key={skill} className="skill-item" whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}>
+                  {skill}
+                </motion.div>
+              ))}
+            </div>
+          </StarBorder>
+        </motion.div>
 
-        <motion.section
+        <motion.div
           id="projects"
           className="content-section"
           initial="hidden"
@@ -113,16 +118,18 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <ScrollFloat>Featured Project</ScrollFloat>
-          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
-            <h3>Real-Time Face and Behaviour Analysis System</h3>
-            <p className="project-status">(In Progress)</p>
-            <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
-            <p className="tech-stack"><strong>Tech:</strong> Python, OpenCV, TensorFlow</p>
-          </motion.div>
-        </motion.section>
+          <StarBorder color="#ffffff" speed="6s">
+            <ScrollFloat>Featured Project</ScrollFloat>
+            <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
+              <h3>Real-Time Face and Behaviour Analysis System</h3>
+              <p className="project-status">(In Progress)</p>
+              <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
+              <p className="tech-stack"><strong>Tech:</strong> Python, OpenCV, TensorFlow</p>
+            </motion.div>
+          </StarBorder>
+        </motion.div>
 
-        <motion.section
+        <motion.div
           id="contact"
           className="content-section"
           initial="hidden"
@@ -130,10 +137,12 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
+          <StarBorder color="#ffffff" speed="5s">
             <ScrollFloat>Get In Touch</ScrollFloat>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
-        </motion.section>
+          </StarBorder>
+        </motion.div>
       </main>
 
       <footer className="footer">
