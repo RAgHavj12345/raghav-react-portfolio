@@ -137,7 +137,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#007cf0" speed="8s">
+          <StarBorder color="#b300ffff" speed="5s">
             <ScrollFloat>Get In Touch</ScrollFloat>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
