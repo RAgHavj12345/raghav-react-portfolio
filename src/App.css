@@ -31,20 +31,17 @@ body {
     z-index: 1;
 }
 
-/* --- Navigation --- */
+/* --- New Pitchfork Header Styles --- */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
+    padding: 0;
     position: fixed;
-    width: 90%;
+    width: 100%;
     top: 0;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    height: 50px;
+    height: var(--navbar-height);
 }
 
 .navbar .container {
@@ -52,46 +49,89 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .logo {
     font-family: var(--font-serif);
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -1px;
     color: var(--accent-color);
     text-decoration: none;
-    z-index: 1001;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     margin: 0;
     padding: 0;
     align-items: center;
 }
 
 .nav-links a {
-    color: var(--subtle-text-color);
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 4px;
     transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease;
 }
 
 .nav-links a:hover {
     color: var(--accent-color);
 }
 
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-socials a {
+    color: var(--subtle-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-socials a:hover {
+    color: var(--accent-color);
+}
+
 .hamburger {
     display: none;
     cursor: pointer;
+    z-index: 1001;
 }
 
 .bar {
     display: block;
     width: 25px;
-    height: 3px;
-    margin: 5px auto;
+    height: 2px;
+    margin: 6px auto;
     transition: all 0.3s ease-in-out;
     background-color: var(--text-color);
 }
@@ -166,8 +206,6 @@ main {
     border: 1px solid var(--border-color);
 }
 
-/* The old .section-title class is no longer needed */
-
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -224,61 +262,53 @@ main {
 
 .footer p {
     color: var(--subtle-text-color);
-    margin-bottom: 1rem;
-}
-
-.footer-links a {
-    color: var(--subtle-text-color);
-    text-decoration: none;
-    margin: 0 1rem;
-    transition: color 0.3s ease;
-    font-weight: 700;
-}
-
-.footer-links a:hover {
-    color: var(--accent-color);
 }
 
 /* --- Mobile Styles --- */
 @media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        left: -100%;
-        top: 0;
-        gap: 2rem;
-        flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
-        width: 100%;
-        height: 100vh;
-        text-align: center;
-        transition: 0.3s;
+    .nav-links, .nav-socials {
+        display: none;
+    }
+
+    .navbar .container {
         justify-content: center;
-        align-items: center;
-        display: flex;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 2rem;
     }
 
     .nav-links.active {
+        position: fixed;
         left: 0;
-    }
-
-    .nav-links li {
-        padding: 0;
+        top: 0;
+        gap: 2rem;
+        flex-direction: column;
+        background-color: rgba(0, 0, 0, 0.98);
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
     }
     
     .nav-links a {
       font-size: 1.5rem;
     }
 
-    .hamburger {
-        display: block;
-        z-index: 1001;
-    }
-
     .hamburger.active .bar {
         background-color: var(--text-color);
     }
-    
+
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;
     }
@@ -298,4 +328,16 @@ main {
     .hero h2 {
       font-size: 1.2rem;
     }
+
+    .mobile-socials {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+.mobile-socials {
+    display: none; /* Hide by default */
 }

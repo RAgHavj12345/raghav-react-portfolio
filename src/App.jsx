@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Galaxy from './Galaxy'; // Import the Galaxy component
-import ScrollFloat from './ScrollFloat'; // Import the new ScrollFloat component
+import Galaxy from './Galaxy';
+import ScrollFloat from './ScrollFloat';
 import './App.css';
 
 // Animation variants for sections
@@ -34,18 +34,27 @@ const App = () => {
         <div className="container">
           <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
           
+          <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+
           <ul className={isMenuOpen ? 'nav-links active' : 'nav-links'}>
             <li><a href="#about" onClick={closeMenu}>About</a></li>
             <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+            <li className="mobile-socials">
+              <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
           </ul>
 
-          <div className={isMenuOpen ? 'hamburger active' : 'hamburger'} onClick={toggleMenu}>
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
+          <div className="nav-socials">
+            <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
       </nav>
@@ -129,10 +138,6 @@ const App = () => {
 
       <footer className="footer">
         <p>&copy; 2025 Raghav Joshi.</p>
-        <div className="footer-links">
-          <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
       </footer>
     </div>
   );
