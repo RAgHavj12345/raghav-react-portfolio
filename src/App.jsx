@@ -84,7 +84,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ff00f7ff" speed="3s">
+          <StarBorder color="#ff00f7ff" speed="5s">
             <ScrollFloat>About Me</ScrollFloat>
             <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
           </StarBorder>
@@ -98,7 +98,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ff00f7ff" speed="3s">
+          <StarBorder color="#ff00f7ff" speed="5s">
             <ScrollFloat>Skills</ScrollFloat>
             <div className="skills-grid">
               {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
@@ -118,7 +118,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ff00f7ff" speed="3s">
+          <StarBorder color="#ff00f7ff" speed="5s">
             <ScrollFloat>Featured Project</ScrollFloat>
             <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
               <h3>Real-Time Face and Behaviour Analysis System</h3>
@@ -137,7 +137,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ff00f7ff" speed="3s">
+          <StarBorder color="#ff00f7ff" speed="5s">
             <ScrollFloat>Get In Touch</ScrollFloat>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
