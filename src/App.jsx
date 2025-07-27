@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import FaultyTerminal from './FaultyTerminal'; // Import the new FaultyTerminal component
+import Galaxy from './Galaxy'; // Import the new Galaxy component
 import './App.css';
 
 // Animation variants for sections
@@ -21,14 +21,12 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <FaultyTerminal
-        tint="#ffffff"
-        brightness={1.2}
-        scanlineIntensity={0.5}
-        glitchAmount={0.8}
-        flickerAmount={0.8}
-        noiseAmp={0.1}
-        pageLoadAnimation={true}
+      <Galaxy 
+        mouseRepulsion={true}
+        density={1.2}
+        glowIntensity={0.5}
+        saturation={0}
+        hueShift={0}
       />
       
       <nav className="navbar">
