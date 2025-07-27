@@ -31,7 +31,7 @@ body {
     z-index: 1;
 }
 
-/* --- Navigation --- */
+/* --- New Pitchfork Header Styles --- */
 .navbar {
     padding: 0;
     position: fixed;
@@ -144,17 +144,28 @@ body {
     min-height: 100vh;
     text-align: center;
     padding: 2rem;
-    /* This is the fix: makes the hero section transparent to mouse events */
-    pointer-events: none;
 }
 
 .hero-content {
     max-width: 800px;
 }
 
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--subtle-text-color);
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+}
+
 .btn {
-    /* This makes the button clickable again */
-    pointer-events: auto;
     display: inline-block;
     background: var(--accent-color);
     color: var(--bg-color);
@@ -175,21 +186,6 @@ body {
     border-color: #cccccc;
 }
 
-.hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 10vw, 6rem);
-    line-height: 1;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: var(--subtle-text-color);
-    letter-spacing: 0.5px;
-    margin-bottom: 2rem;
-}
-
 /* --- Main Content --- */
 main {
     width: 100%;
@@ -201,13 +197,9 @@ main {
 }
 
 .content-section {
-    padding: 6rem 2rem;
+    padding: 0; /* Padding is now handled by StarBorder */
+    margin-bottom: 4rem; /* Add space between sections */
     text-align: center;
-    background-color: var(--card-bg);
-    backdrop-filter: blur(5px);
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
 }
 
 .skills-grid {
