@@ -5,4 +5,5 @@
   top: 0;
   left: 0;
   z-index: -1; /* Place it behind all other content */
+  pointer-events: auto; /* This is the fix: ensures mouse events are captured */
 }
