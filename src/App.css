@@ -1,3 +1,4 @@
+/* App.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
@@ -371,4 +372,21 @@ main {
         transform: none;
         position: static;
     }
+}
+.social-icon {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.nav-socials a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
