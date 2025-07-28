@@ -1,3 +1,4 @@
+/* App.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
@@ -31,7 +32,6 @@ body {
     z-index: 1;
 }
 
-/* --- Navigation --- */
 .navbar {
     padding: 0;
     position: fixed;
@@ -136,7 +136,6 @@ body {
     background-color: var(--text-color);
 }
 
-/* --- Hero Section --- */
 .hero {
     display: flex;
     justify-content: center;
@@ -188,7 +187,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* --- Main Content --- */
 main {
     width: 100%;
     max-width: 900px;
@@ -254,7 +252,6 @@ main {
     color: var(--subtle-text-color);
 }
 
-/* --- Footer --- */
 .footer {
     text-align: center;
     padding: 3rem 2rem;
@@ -266,7 +263,6 @@ main {
     color: var(--subtle-text-color);
 }
 
-/* --- Mobile Styles --- */
 @media (max-width: 768px) {
     .nav-links, .nav-socials {
         display: none;
@@ -331,6 +327,14 @@ main {
         font-size: 1.2rem;
     }
 
+    .mobile-socials {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+
     .mobile-social-link {
         display: block;
         font-size: 1.3rem;
@@ -338,10 +342,13 @@ main {
         margin-top: 1rem;
         text-decoration: none;
         font-weight: 500;
-        transition: color 0.3s ease;
     }
 
     .mobile-social-link:hover {
         color: var(--accent-color);
     }
+}
+
+.mobile-socials {
+    display: none;
 }
