@@ -32,10 +32,6 @@ const App = () => {
           {/* Logo + Socials for mobile */}
           <div className="mobile-header-left">
             <a href="#home" className="logo" onClick={closeMenu}>RJ</a>
-            <div className="mobile-header-socials">
-              <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
           </div>
 
           {/* Hamburger */}
