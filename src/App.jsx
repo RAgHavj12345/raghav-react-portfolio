@@ -47,8 +47,10 @@ const App = () => {
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-            <li><a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer" className="mobile-social-link">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer" className="mobile-social-link">LinkedIn</a></li>
+            <li className="mobile-socials">
+              <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
           </ul>
 
           <div className="nav-socials">
@@ -82,7 +84,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ffffffff" speed="5s">
+          <StarBorder color="#ffffff" speed="8s">
             <ScrollFloat>About Me</ScrollFloat>
             <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
           </StarBorder>
@@ -96,7 +98,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ffffffff" speed="7s">
+          <StarBorder color="#ffffff" speed="7s">
             <ScrollFloat>Skills</ScrollFloat>
             <div className="skills-grid">
               {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
@@ -116,7 +118,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ffffffff" speed="9s">
+          <StarBorder color="#ffffff" speed="6s">
             <ScrollFloat>Featured Project</ScrollFloat>
             <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
               <h3>Real-Time Face and Behaviour Analysis System</h3>
@@ -135,7 +137,7 @@ const App = () => {
           viewport={{ once: true, amount: 0.5 }}
           variants={sectionVariants}
         >
-          <StarBorder color="#ffffffff" speed="5s">
+          <StarBorder color="#ffffff" speed="5s">
             <ScrollFloat>Get In Touch</ScrollFloat>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
