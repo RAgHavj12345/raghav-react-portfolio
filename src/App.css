@@ -31,7 +31,7 @@ body {
     z-index: 1;
 }
 
-/* --- Pitchfork Header Styles --- */
+/* --- Navigation --- */
 .navbar {
     padding: 0;
     position: fixed;
@@ -144,28 +144,15 @@ body {
     min-height: 100vh;
     text-align: center;
     padding: 2rem;
+    pointer-events: none;
 }
 
 .hero-content {
     max-width: 800px;
 }
 
-.hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 10vw, 6rem);
-    line-height: 1;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: var(--subtle-text-color);
-    letter-spacing: 0.5px;
-    margin-bottom: 2rem;
-}
-
 .btn {
+    pointer-events: auto;
     display: inline-block;
     background: var(--accent-color);
     color: var(--bg-color);
@@ -186,6 +173,21 @@ body {
     border-color: #cccccc;
 }
 
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(3rem, 10vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--subtle-text-color);
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+}
+
 /* --- Main Content --- */
 main {
     width: 100%;
@@ -197,9 +199,13 @@ main {
 }
 
 .content-section {
-    padding: 0; /* Padding is now handled by StarBorder */
-    margin-bottom: 4rem; /* Add space between sections */
+    padding: 6rem 2rem;
     text-align: center;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
 }
 
 .skills-grid {
@@ -218,7 +224,8 @@ main {
 }
 
 .project-card {
-    /* The GlareHover component now handles the border and background */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
     padding: 2rem;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -295,9 +302,9 @@ main {
         align-items: center;
         display: flex;
     }
-    
+
     .nav-links a {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
 
     .hamburger.active .bar {
@@ -315,24 +322,26 @@ main {
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-    
+
     .hero h1 {
-      font-size: 2.5rem;
+        font-size: 2.5rem;
     }
-    
+
     .hero h2 {
-      font-size: 1.2rem;
+        font-size: 1.2rem;
     }
 
-    .mobile-socials {
-        display: flex;
-        gap: 2rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 1px solid var(--border-color);
+    .mobile-social-link {
+        display: block;
+        font-size: 1.3rem;
+        color: var(--text-color);
+        margin-top: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
     }
-}
 
-.mobile-socials {
-    display: none; /* Hide by default */
+    .mobile-social-link:hover {
+        color: var(--accent-color);
+    }
 }
