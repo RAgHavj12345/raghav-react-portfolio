@@ -51,12 +51,12 @@ const App = () => {
               <a className="mobile-social-link" href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">
                 <FaGithub className="social-icon" /> GitHub
               </a>
+                <br />
               <a className="mobile-social-link" href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin className="social-icon" /> LinkedIn
               </a>
             </li>
           </ul>
-
         </div>
       </nav>
 
