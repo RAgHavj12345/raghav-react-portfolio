@@ -1,17 +1,24 @@
 .scroll-float {
-    /* This uses the same font as your other section titles */
     font-family: var(--font-serif);
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
+    /* This prevents the text from breaking in the middle of a word */
+    white-space: nowrap; 
 }
 
 .scroll-float-text {
     display: inline-block;
-    white-space: pre-wrap;
 }
 
 .scroll-float .char {
     display: inline-block;
     will-change: transform, opacity;
+}
+
+/* Add a media query to reduce font size on smaller screens */
+@media (max-width: 480px) {
+    .scroll-float {
+        font-size: 2rem;
+    }
 }
