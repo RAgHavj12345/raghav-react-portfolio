@@ -72,7 +72,7 @@ const App = () => {
         </motion.div>
 
         <motion.div id="skills" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
-          <StarBorder color="#ffffffff" speed="7s">
+          <StarBorder color="#ffffffff" speed="9s">
             <ScrollFloat>Skills</ScrollFloat>
             <div className="skills-grid">
               {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
@@ -101,7 +101,7 @@ const App = () => {
         </motion.div>
 
         <motion.div id="contact" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={sectionVariants}>
-          <StarBorder color="#ffffffff" speed="5s">
+          <StarBorder color="#ffffffff" speed="6s">
             <ScrollFloat>Get In Touch</ScrollFloat>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
