@@ -20,23 +20,23 @@ const sectionVariants = {
 // Data for projects
 const projectsData = [
   {
-    title: '🔮 EV Adoption Forecaster',
-    status: 'Completed & Deployed',
-    description: 'A time-series forecasting model deployed as an interactive Streamlit app to predict county-level EV adoption.',
-    tech: 'Python, Streamlit, Scikit-learn, Pandas',
-    imageUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction/raw/main/assets/app-screenshot.png',
-    liveUrl: 'https://evchargingprediction-tkfusxpyhmxkvkivseemmf.streamlit.app/',
-    githubUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction'
-  },
-  {
-    title: '🔧 Predictive Maintenance for Industrial Machinery',
-    status: 'Completed & Deployed',
-    description: 'An end-to-end ML project on IBM Watsonx.ai to predict industrial equipment failures, achieving 99.6% accuracy.',
-    tech: 'Python, IBM Watsonx.ai, AutoAI, Scikit-learn',
-    imageUrl: 'https://raw.githubusercontent.com/raghavj12345/Predictive-Maintenance-Project/main/confusion_matrix.png',
-    liveUrl: null,
-    githubUrl: 'https://github.com/raghavj12345/Predictive-Maintenance-Project'
-  },
+  title: '🔮 EV Adoption Forecaster',
+  status: 'Completed & Deployed',
+  description: 'A time-series forecasting model deployed as an interactive Streamlit app to predict county-level EV adoption.',
+  tech: 'Python, Streamlit, Scikit-learn, Pandas',
+  imageUrl: '/images/app-screenshot.png',
+  liveUrl: null,
+  githubUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction'
+},
+{
+  title: '🔧 Predictive Maintenance for Industrial Machinery',
+  status: 'Completed & Deployed',
+  description: 'An end-to-end ML project on IBM Watsonx.ai to predict industrial equipment failures, achieving 99.6% accuracy.',
+  tech: 'Python, IBM Watsonx.ai, AutoAI, Scikit-learn',
+  imageUrl: '/images/confusion_matrix.png',
+  liveUrl: null,
+  githubUrl: 'https://github.com/raghavj12345/Predictive-Maintenance-Project'
+},
   {
     title: 'Real-Time Face and Behaviour Analysis System',
     status: 'In Progress',
