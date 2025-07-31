@@ -118,12 +118,13 @@ const App = () => {
                     <p className="tech-stack"><strong>Tech:</strong> {project.tech}</p>
                     <div className="project-links">
                       {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="https://evchargingprediction-tkfusxpyhmxkvkivseemmf.streamlit.app/">
-                          <FaExternalLinkAlt /> Live App
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                           <FaExternalLinkAlt /> Live App
                         </a>
+                        
                       )}
                       {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="https://github.com/RAgHavj12345/EV_Charging_Prediction">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
                           <FaGithub /> GitHub
                         </a>
                       )}
