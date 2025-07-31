@@ -44,7 +44,7 @@ const projectsData = [
     tech: 'Python, OpenCV, TensorFlow',
     imageUrl: null, 
     liveUrl: null, 
-    githubUrl: '#' // Replace '#' with the actual link
+    githubUrl: '#' // Replace with the actual link
   }
 ];
 
