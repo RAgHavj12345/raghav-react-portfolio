@@ -74,12 +74,11 @@ const App = () => {
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
             <li className="mobile-socials">
-              <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">
-                <FaGithub /> GitHub
+              <a className="mobile-social-link" href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">
+                <FaGithub className="social-icon" /> GitHub
               </a>
-            
-              <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin /> LinkedIn
+              <a className="mobile-social-link" href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin className="social-icon" /> LinkedIn
               </a>
             </li>
           </ul>
