@@ -445,3 +445,8 @@ main {
 .project-link:hover {
   color: var(--accent-color);
 }
+/* Add this to the end of App.css */
+.project-links a {
+  position: relative; /* This is needed for z-index to work */
+  z-index: 10;      /* This lifts the link above other elements */
+}

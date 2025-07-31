@@ -33,9 +33,9 @@ const projectsData = [
     status: 'In Progress',
     description: 'Integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.',
     tech: 'Python, OpenCV, TensorFlow',
-    imageUrl: null, // Add an image URL when you have one
-    liveUrl: null, // Add a live link when deployed
-    githubUrl: '#' // Add the GitHub link
+    imageUrl: null, 
+    liveUrl: null, 
+    githubUrl: '#' // Replace '#' with the actual link
   }
 ];
 
@@ -99,43 +99,41 @@ const App = () => {
           </StarBorder>
         </motion.div>
 
-        {/* --- UPDATED PROJECTS SECTION --- */}
-        <motion.div id="projects" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
-          <StarBorder color="#ffffffff" speed="9s">
-            <ScrollFloat>Featured Projects</ScrollFloat>
-            <div className="projects-grid">
-              {projectsData.map((project, index) => (
-                <GlareHover key={index} glareColor="#ffffff" glareOpacity={0.2} glareAngle={-30} glareSize={400} transitionDuration={800} playOnce={false} style={{ width: "100%", height: "100%" }}>
-                  <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
-                    {project.imageUrl && (
-                      <a href={project.liveUrl || project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <img src={project.imageUrl} alt={project.title} className="project-image" />
-                      </a>
-                    )}
-                    <h3>{project.title}</h3>
-                    <p className="project-status">({project.status})</p>
-                    <p>{project.description}</p>
-                    <p className="tech-stack"><strong>Tech:</strong> {project.tech}</p>
-                    <div className="project-links">
-                      {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link">
-                           <FaExternalLinkAlt /> Live App
-                        </a>
-                        
-                      )}
-                      {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
-                          <FaGithub /> GitHub
-                        </a>
-                      )}
-                    </div>
-                  </motion.div>
-                </GlareHover>
-              ))}
+        {/* --- REPLACE YOUR PROJECTS SECTION WITH THIS --- */}
+<motion.div id="projects" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
+  <StarBorder color="#ffffffff" speed="9s">
+    <ScrollFloat>Featured Projects</ScrollFloat>
+    <div className="projects-grid">
+      {projectsData.map((project, index) => (
+        <GlareHover key={index} glareColor="#ffffff" glareOpacity={0.2} glareAngle={-30} glareSize={400} transitionDuration={800} playOnce={false} style={{ width: "100%", height: "100%" }}>
+          <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
+            {project.imageUrl && (
+              <a href={project.liveUrl || project.githubUrl} target="_blank" rel="noopener noreferrer">
+                <img src={project.imageUrl} alt={project.title} className="project-image" />
+              </a>
+            )}
+            <h3>{project.title}</h3>
+            <p className="project-status">({project.status})</p>
+            <p>{project.description}</p>
+            <p className="tech-stack"><strong>Tech:</strong> {project.tech}</p>
+            <div className="project-links">
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                  <FaExternalLinkAlt /> Live App
+                </a>
+              )}
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                  <FaGithub /> GitHub
+                </a>
+              )}
             </div>
-          </StarBorder>
-        </motion.div>
-
+          </motion.div>
+        </GlareHover>
+      ))}
+    </div>
+  </StarBorder>
+</motion.div>
         <motion.div id="contact" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={sectionVariants}>
           <StarBorder color="#ffffffff" speed="6s">
             <ScrollFloat>Get In Touch</ScrollFloat>
