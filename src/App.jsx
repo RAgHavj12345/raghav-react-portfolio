@@ -73,9 +73,18 @@ const App = () => {
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+            <li className="mobile-socials">
+              <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
           </ul>
+          <div className="nav-socials">
+            <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
         </div>
       </nav>
+      
 
       <header id="home" className="hero">
         <motion.div className="hero-content" initial="hidden" animate="visible" variants={{ visible: { transition: { staggerChildren: 0.3 } } }}>
