@@ -78,10 +78,7 @@ const App = () => {
               <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </li>
           </ul>
-          <div className="nav-socials">
-            <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
+          
         </div>
       </nav>
       
