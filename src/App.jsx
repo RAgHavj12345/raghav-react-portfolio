@@ -29,6 +29,15 @@ const projectsData = [
     githubUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction'
   },
   {
+    title: '🔧 Predictive Maintenance for Industrial Machinery',
+    status: 'Completed & Deployed',
+    description: 'An end-to-end ML project on IBM Watsonx.ai to predict industrial equipment failures, achieving 99.6% accuracy.',
+    tech: 'Python, IBM Watsonx.ai, AutoAI, Scikit-learn',
+    imageUrl: 'https://raw.githubusercontent.com/raghavj12345/Predictive-Maintenance-Project/main/images/result_tble.png',
+    liveUrl: null,
+    githubUrl: 'https://github.com/raghavj12345/Predictive-Maintenance-Project'
+  },
+  {
     title: 'Real-Time Face and Behaviour Analysis System',
     status: 'In Progress',
     description: 'Integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.',
