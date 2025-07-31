@@ -25,8 +25,9 @@ const projectsData = [
   description: 'A time-series forecasting model deployed as an interactive Streamlit app to predict county-level EV adoption.',
   tech: 'Python, Streamlit, Scikit-learn, Pandas',
   imageUrl: '/images/app-screenshot.png',
-  liveUrl: null,
+  liveUrl: 'https://evchargingprediction-tkfusxpyhmxkvkivseemmf.streamlit.app/',
   githubUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction'
+  
 },
 {
   title: '🔧 Predictive Maintenance for Industrial Machinery',
