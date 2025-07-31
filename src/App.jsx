@@ -77,6 +77,7 @@ const App = () => {
               <a href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">
                 <FaGithub /> GitHub
               </a>
+            
               <a href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin /> LinkedIn
               </a>
