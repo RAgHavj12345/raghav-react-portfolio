@@ -17,7 +17,7 @@ const sectionVariants = {
   }
 };
 
-// Data for your projects
+// Data for projects
 const projectsData = [
   {
     title: '🔮 EV Adoption Forecaster',
@@ -33,7 +33,7 @@ const projectsData = [
     status: 'Completed & Deployed',
     description: 'An end-to-end ML project on IBM Watsonx.ai to predict industrial equipment failures, achieving 99.6% accuracy.',
     tech: 'Python, IBM Watsonx.ai, AutoAI, Scikit-learn',
-    imageUrl: 'https://raw.githubusercontent.com/raghavj12345/Predictive-Maintenance-Project/main/images/result_tble.png',
+    imageUrl: 'https://raw.githubusercontent.com/raghavj12345/Predictive-Maintenance-Project/main/images/confusion_matrix.png',
     liveUrl: null,
     githubUrl: 'https://github.com/raghavj12345/Predictive-Maintenance-Project'
   },
