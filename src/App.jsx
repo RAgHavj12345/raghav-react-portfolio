@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
 import Galaxy from './Galaxy';
 import ScrollFloat from './ScrollFloat';
 import StarBorder from './StarBorder';
@@ -16,6 +16,28 @@ const sectionVariants = {
     transition: { duration: 0.8, ease: "easeOut" }
   }
 };
+
+// Data for your projects
+const projectsData = [
+  {
+    title: '🔮 EV Adoption Forecaster',
+    status: 'Completed & Deployed',
+    description: 'A time-series forecasting model deployed as an interactive Streamlit app to predict county-level EV adoption.',
+    tech: 'Python, Streamlit, Scikit-learn, Pandas',
+    imageUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction/raw/main/assets/app-screenshot.png',
+    liveUrl: 'https://evchargingprediction-tkfusxpyhmxkvkivseemmf.streamlit.app/',
+    githubUrl: 'https://github.com/RAgHavj12345/EV_Charging_Prediction'
+  },
+  {
+    title: 'Real-Time Face and Behaviour Analysis System',
+    status: 'In Progress',
+    description: 'Integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.',
+    tech: 'Python, OpenCV, TensorFlow',
+    imageUrl: null, // Add an image URL when you have one
+    liveUrl: null, // Add a live link when deployed
+    githubUrl: '#' // Add the GitHub link
+  }
+];
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,21 +58,12 @@ const App = () => {
               <span className="bar"></span>
             </div>
           </div>
-
           <ul className={isMenuOpen ? 'nav-links active' : 'nav-links'}>
             <li><a href="#about" onClick={closeMenu}>About</a></li>
             <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
             <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
             <li><a href="https://raghavj12345.github.io/Certifications/" target="_blank" rel="noopener noreferrer">Certifications</a></li>
             <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
-            <li className="mobile-socials">
-              <a className="mobile-social-link" href="https://github.com/raghavj12345" target="_blank" rel="noopener noreferrer">
-                <FaGithub className="social-icon" /> GitHub
-              </a>
-              <a className="mobile-social-link" href="https://www.linkedin.com/in/raghav-joshi-687a02373" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin className="social-icon" /> LinkedIn
-              </a>
-            </li>
           </ul>
         </div>
       </nav>
@@ -86,17 +99,39 @@ const App = () => {
           </StarBorder>
         </motion.div>
 
+        {/* --- UPDATED PROJECTS SECTION --- */}
         <motion.div id="projects" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
           <StarBorder color="#ffffffff" speed="9s">
-            <ScrollFloat>Featured Project</ScrollFloat>
-            <GlareHover glareColor="#ffffff" glareOpacity={0.3} glareAngle={-30} glareSize={300} transitionDuration={800} playOnce={false} style={{ width: "100%", height: "100%" }}>
-              <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
-                <h3>Real-Time Face and Behaviour Analysis System</h3>
-                <p className="project-status">(In Progress)</p>
-                <p>This project integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.</p>
-                <p className="tech-stack"><strong>Tech:</strong> Python, OpenCV, TensorFlow</p>
-              </motion.div>
-            </GlareHover>
+            <ScrollFloat>Featured Projects</ScrollFloat>
+            <div className="projects-grid">
+              {projectsData.map((project, index) => (
+                <GlareHover key={index} glareColor="#ffffff" glareOpacity={0.2} glareAngle={-30} glareSize={400} transitionDuration={800} playOnce={false} style={{ width: "100%", height: "100%" }}>
+                  <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
+                    {project.imageUrl && (
+                      <a href={project.liveUrl || project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <img src={project.imageUrl} alt={project.title} className="project-image" />
+                      </a>
+                    )}
+                    <h3>{project.title}</h3>
+                    <p className="project-status">({project.status})</p>
+                    <p>{project.description}</p>
+                    <p className="tech-stack"><strong>Tech:</strong> {project.tech}</p>
+                    <div className="project-links">
+                      {project.liveUrl && (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                          <FaExternalLinkAlt /> Live App
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                          <FaGithub /> GitHub
+                        </a>
+                      )}
+                    </div>
+                  </motion.div>
+                </GlareHover>
+              ))}
+            </div>
           </StarBorder>
         </motion.div>
 
