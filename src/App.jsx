@@ -19,7 +19,7 @@ const sectionVariants = {
 // Data for projects
 const projectsData = [
   {
-  title: '🔮 EV Adoption Forecaster',
+  title: 'EV Adoption Forecaster',
   status: 'Completed & Deployed',
   description: 'A time-series forecasting model deployed as an interactive Streamlit app to predict county-level EV adoption.',
   tech: 'Python, Streamlit, Scikit-learn, Pandas',
@@ -29,7 +29,7 @@ const projectsData = [
   
 },
 {
-  title: '🔧 Predictive Maintenance for Industrial Machinery',
+  title: 'Predictive Maintenance for Industrial Machinery',
   status: 'Completed & Deployed',
   description: 'An end-to-end ML project on IBM Watsonx.ai to predict industrial equipment failures, achieving 99.6% accuracy.',
   tech: 'Python, IBM Watsonx.ai, AutoAI, Scikit-learn',
