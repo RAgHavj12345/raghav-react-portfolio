@@ -403,26 +403,26 @@ main {
 /* --- ADD THESE STYLES TO APP.CSS --- */
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 0;
+    width: 100%;
+  }
 
 .project-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Ensure cards in a row are same height */
-}
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 1rem;
+  }
 
 .project-image {
-  width: 100%;
-  height: 300px; /* <-- CHANGE THIS VALUE TO RESIZE THE IMAGE */
-  object-fit: cover; /* This ensures the image fills the space without distortion */
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  border: 1px solid var(--border-color);
-}
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 8px;
+  }
 
 .project-links {
   margin-top: auto; /* Pushes links to the bottom */
@@ -449,4 +449,11 @@ main {
 .project-links a {
   position: relative; /* This is needed for z-index to work */
   z-index: 10;      /* This lifts the link above other elements */
+}
+
+.app-container,
+.content-section,
+.projects-grid {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
