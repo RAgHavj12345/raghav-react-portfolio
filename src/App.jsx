@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
 import Galaxy from './Galaxy';
-import ScrollFloat from './ScrollFloat';
 import StarBorder from './StarBorder';
 import GlareHover from './GlareHover';
 import './App.css';
@@ -97,15 +96,17 @@ const App = () => {
 
       <main>
         <motion.div id="about" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
-          <StarBorder color="#ffffffff" speed="5s">
-            <ScrollFloat>About Me</ScrollFloat>
+          <StarBorder color="#ffffffff" speed="8s">
+           <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={600}>
+            <h2>About Me</h2>
             <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
+            </GlareHover>
           </StarBorder>
         </motion.div>
 
         <motion.div id="skills" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
           <StarBorder color="#ffffffff" speed="9s">
-            <ScrollFloat>Skills</ScrollFloat>
+            <h2>Skills</h2>
             <div className="skills-grid">
               {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
                 <GlareHover key={skill} glareOpacity={0.2} glareSize={200} transitionDuration={600}>
@@ -121,7 +122,7 @@ const App = () => {
         {/* --- REPLACE YOUR PROJECTS SECTION WITH THIS --- */}
 <motion.div id="projects" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
   <StarBorder color="#ffffffff" speed="9s">
-    <ScrollFloat>Featured Projects</ScrollFloat>
+    <h2>Featured Projects</h2>
     <div className="projects-grid">
       {projectsData.map((project, index) => (
         <GlareHover key={index} glareColor="#ffffff" glareOpacity={0.2} glareAngle={-30} glareSize={400} transitionDuration={800} playOnce={false} style={{ width: "100%", height: "100%" }}>
@@ -154,10 +155,12 @@ const App = () => {
   </StarBorder>
 </motion.div>
         <motion.div id="contact" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={sectionVariants}>
-          <StarBorder color="#ffffffff" speed="6s">
-            <ScrollFloat>Get In Touch</ScrollFloat>
+          <StarBorder color="#ffffffff" speed="8s">
+          <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={600}>
+            <h2>Get In Touch</h2>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
+          </GlareHover>
           </StarBorder>
         </motion.div>
       </main>
