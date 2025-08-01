@@ -109,7 +109,7 @@ const App = () => {
             <h2>Skills</h2>
             <div className="skills-grid">
               {['Python', 'TensorFlow', 'PyTorch', 'Scikit-Learn', 'Pandas', 'NumPy', 'SQL', 'OpenCV', 'Git'].map(skill => (
-                <GlareHover key={skill} glareOpacity={0.2} glareSize={200} transitionDuration={600}>
+                <GlareHover key={skill} glareOpacity={0.2} glareSize={200} transitionDuration={1200}>
                   <motion.div className="skill-item" whileHover={{ y: -5, backgroundColor: '#ffffff', color: '#000000' }}>
                     {skill}
                   </motion.div>
@@ -125,7 +125,7 @@ const App = () => {
     <h2>Featured Projects</h2>
     <div className="projects-grid">
       {projectsData.map((project, index) => (
-        <GlareHover key={index} glareColor="#ffffff" glareOpacity={0.2} glareAngle={-30} glareSize={400} transitionDuration={800} playOnce={false} style={{ width: "100%", height: "100%" }}>
+        <GlareHover key={index} glareColor="#ffffff" glareOpacity={0.2} glareAngle={-30} glareSize={400} transitionDuration={1200} playOnce={false} style={{ width: "100%", height: "100%" }}>
           <motion.div className="project-card" whileHover={{ y: -5, boxShadow: '0 10px 20px rgba(255,255,255,0.1)' }}>
             {project.imageUrl && (
               <a href={project.liveUrl || project.githubUrl} target="_blank" rel="noopener noreferrer">
