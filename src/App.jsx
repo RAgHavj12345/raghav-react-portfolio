@@ -97,7 +97,7 @@ const App = () => {
       <main>
         <motion.div id="about" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
           <StarBorder color="#ffffffff" speed="8s">
-           <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={600}>
+           <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={1200}>
             <h2>About Me</h2>
             <p>I am a motivated and detail-oriented AI/ML enthusiast with a strong academic foundation in Computer Science. My passion lies in turning complex data into actionable insights and building impactful, intelligent solutions.</p>
             </GlareHover>
@@ -156,7 +156,7 @@ const App = () => {
 </motion.div>
         <motion.div id="contact" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={sectionVariants}>
           <StarBorder color="#ffffffff" speed="8s">
-          <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={600}>
+          <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={1200}>
             <h2>Get In Touch</h2>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
             <a href="mailto:raghavj12321@gmail.com" className="btn">Say Hello</a>
