@@ -402,27 +402,30 @@ main {
 }
 /* --- ADD THESE STYLES TO APP.CSS --- */
 
-.projects-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin: 0;
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
-
-.project-card {
+  .project-card {
     width: 100%;
     min-width: 0;
     box-sizing: border-box;
     margin: 0;
     padding: 1rem;
+    border-radius: 10px;
   }
-
-.project-image {
-    height: 180px;
-    object-fit: cover;
+  .project-image {
     width: 100%;
+    height: auto;
+    max-height: 180px;
+    object-fit: cover;
     border-radius: 8px;
   }
+
 
 .project-links {
   margin-top: auto; /* Pushes links to the bottom */
