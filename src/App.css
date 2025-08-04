@@ -424,17 +424,23 @@ main {
     background: var(--card-bg);
   }
   .content-section {
-    padding: 2rem 0.5rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    width: 100vw;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 650px; /* Smaller section */
+    margin-left: auto;
+    margin-right: auto;
     box-sizing: border-box;
     overflow-x: hidden;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+}
   .project-image {
     width: 100%;
     height: auto;
