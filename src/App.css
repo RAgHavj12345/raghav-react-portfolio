@@ -401,6 +401,25 @@ main {
   position: relative;
 }
 /* --- ADD THESE STYLES TO APP.CSS --- */
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the cards horizontally */
+    gap: 1.5rem;
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .project-card {
+    width: 100%;
+    max-width: 400px; /* Optional: limit card width for better look */
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    text-align: center; /* Center text inside card */
+  }
   .content-section {
     padding: 2rem 0.5rem;
     border-radius: 8px;
@@ -408,6 +427,7 @@ main {
     width: 100vw;
     box-sizing: border-box;
     overflow-x: hidden;
+    text-align: center; /* Center section content */
   }
   .project-image {
     width: 100%;
