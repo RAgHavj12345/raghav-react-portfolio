@@ -195,7 +195,7 @@ main {
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center all content */
+    align-items: center;
     box-sizing: border-box;
 }
 
@@ -208,7 +208,7 @@ main {
     margin-bottom: 1.5rem;
     border: 1px solid var(--border-color);
     width: 100%;
-    max-width: 650px; /* Smaller section */
+    max-width: 650px; 
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
@@ -238,7 +238,7 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.2rem;
     width: 100%;
-    max-width: 650px; /* Smaller grid */
+    max-width: 650px; 
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
@@ -290,7 +290,7 @@ main {
 }
 
 .project-links {
-    margin-top: auto; /* Pushes links to the bottom */
+    margin-top: auto; 
     padding-top: 1rem;
     display: flex;
     gap: 1.5rem;
@@ -312,8 +312,8 @@ main {
 }
 
 .project-links a {
-    position: relative; /* This is needed for z-index to work */
-    z-index: 10;      /* This lifts the link above other elements */
+    position: relative;
+    z-index: 10;      
 }
 
 .footer {
