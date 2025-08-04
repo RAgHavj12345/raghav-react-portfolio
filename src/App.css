@@ -401,22 +401,13 @@ main {
   position: relative;
 }
 /* --- ADD THESE STYLES TO APP.CSS --- */
-
-  .projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .project-card {
-    width: 100%;
-    min-width: 0;
+  .content-section {
+    padding: 2rem 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 100vw;
     box-sizing: border-box;
-    margin: 0;
-    padding: 1rem;
-    border-radius: 10px;
+    overflow-x: hidden;
   }
   .project-image {
     width: 100%;
