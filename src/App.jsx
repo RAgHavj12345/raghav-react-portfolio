@@ -37,7 +37,7 @@ const projectsData = [
   liveUrl: null,
   githubUrl: 'https://github.com/raghavj12345/Predictive-Maintenance-Project'
 },
-  {
+{
     title: 'Real-Time Face and Behaviour Analysis System',
     status: 'In Progress',
     description: 'Integrates computer vision and deep learning to analyze facial expressions and behavioral patterns from a real-time video feed.',
@@ -45,6 +45,15 @@ const projectsData = [
     imageUrl: null, 
     liveUrl: null, 
     githubUrl: '#' // Replace with the actual link
+  },
+{
+    title: 'Conscious Cart – AI-Powered Eco Product Analyzer',
+    status: 'Completed',
+    description: 'An AI-powered tool that analyzes the environmental impact of consumer products based on name or URL input, then suggests sustainable alternatives. Built using Google Gemini and LangGraph agent architecture.\n\nContribution: Collaborated on core logic and prompt engineering for product analysis and recommendation engine.',
+    tech: 'Python, LangGraph, Google Gemini, BeautifulSoup, OpenAI/Google APIs',
+    imageUrl: null,
+    liveUrl: 'https://conscious-cart-ai-agent.streamlit.app/',
+    githubUrl: 'https://github.com/RAgHavj12345/Conscious-Cart-AI-Agent' 
   }
 ];
 
@@ -119,7 +128,7 @@ const App = () => {
           </StarBorder>
         </motion.div>
 
-        {/* --- REPLACE YOUR PROJECTS SECTION WITH THIS --- */}
+        {/* --- PROJECTS SECTION --- */}
 <motion.div id="projects" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={sectionVariants}>
   <StarBorder color="#ffffffff" speed="9s">
     <h2>Featured Projects</h2>
