@@ -164,7 +164,7 @@ const App = () => {
   </StarBorder>
 </motion.div>
         <motion.div id="contact" className="content-section" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={sectionVariants}>
-          <StarBorder color="#ffffffff" speed="8s">
+          <StarBorder color="#ffffffff" speed="9s">
           <GlareHover glareOpacity={0.2} glareSize={300} transitionDuration={1200}>
             <h2>Get In Touch</h2>
             <p>I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!</p>
