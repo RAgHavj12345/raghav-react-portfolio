@@ -175,7 +175,7 @@ const App = () => {
       </main>
 
       <footer className="footer">
-        <p>&copy; 2025 Raghav Joshi.</p>
+        <p>&copy; 2026 Raghav Joshi.</p>
       </footer>
     </div>
   );
