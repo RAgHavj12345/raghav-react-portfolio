@@ -16,7 +16,7 @@ const sectionVariants = {
   }
 };
 
-// Data for projects
+
 const projectsData = [
   {
   title: 'EV Adoption Forecaster',
